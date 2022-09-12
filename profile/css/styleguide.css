@@ -1,0 +1,117 @@
+.intro {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+a {
+  color: #52cbc7;
+}
+
+h1 {
+  font-family: Bitter; 
+  font-size: 3em;
+  font-weight: 600;
+}
+
+p {
+  font-family: 'IBM Plex Sans';
+  text-align: center;
+}
+
+h2, h3 {
+  font-family: Bitter; 
+  text-align: center;
+}
+
+.doodle1 {
+  z-index: 50;
+  position: absolute;
+  left: 60%;
+  bottom: auto;
+  top: 10%;
+  animation: wiggle 1s infinite;
+}
+
+.doodle2 {
+  z-index: 50;
+  position: absolute;
+  left: 5%;
+  bottom: auto;
+  top: 80%;
+  animation: shake 1s infinite;
+}
+
+.doodle3 {
+  z-index: 50;
+  position: absolute;
+  left: 75%;
+  bottom: auto;
+  top: 26%;
+}
+
+.doodle4 {
+  z-index: 50;
+  position: absolute;
+  left: 18%;
+  bottom: auto;
+  top: 94%;
+}
+
+.description {
+  background: #f2f0ff;
+  box-shadow: 0px 3px 18px 8px rgba(197, 197, 197, 0.25);
+  display: block;
+  justify-content: center;
+  margin-top: 3%;
+  padding: 3% 0 20% 0;
+}
+
+.description h2 {
+  font-size: 2em;
+  font-weight: 600;
+  text-align: center;
+  
+}
+
+.description h3 {
+  line-height: 2em;
+  font-weight: 400; 
+  font-size: 0.9em; 
+}
+
+.linkedin {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 25% 0 25%;
+  margin-top: 4%;
+}
+
+/* animation */
+
+@keyframes wiggle {
+  0% { transform: rotate(0deg); }
+  80% { transform: rotate(-4deg); }
+  85% { transform: rotate(10deg); }
+  95% { transform: rotate(-5deg); }
+ 100% { transform: rotate(0deg); }
+}
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-5px, 0, 0);
+  }
+
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
