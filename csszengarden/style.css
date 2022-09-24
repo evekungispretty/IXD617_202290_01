@@ -110,7 +110,6 @@ p{
     font-weight: 700;
     font-family: Quicksand;
     text-decoration: none;
-    transition: background 1s;
 }
 
 #download :hover {
@@ -240,7 +239,7 @@ footer a {
 }    
 
 .bottom h3 {
-    font-size: 10em;
+    font-size: 8em;
     color:  rgb(33, 255, 8);
     margin-bottom: -2%;
 }
