@@ -12,3 +12,4 @@ IXD 617 Advanced Tech: Mobile Web
 - https://github.com/evekungispretty/IXD617_202290_01
 - http://evekung.com/aau/ixd617/profile/
 - http://evekung.com/aau/ixd617/csszengarden
+- http://evekung.com/aau/ixd617/finalprojectproposal_EveKung.pdf
