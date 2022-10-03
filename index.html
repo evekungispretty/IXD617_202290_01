@@ -3,7 +3,15 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
+	<title>House Hunting</title>
+	<link rel="stylesheet" href="src/css/app.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+    <link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&family=Raleway:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+	<script src="src/js/app.js"></script>
+	<script src="lib/js/jquery-2.2.4.min.js"></script>
+	<script src="lib/js/jquery.mobile-1.4.5.min.js"></script>
+
     <meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -11,7 +19,190 @@
 </head>
 
 <body>
-    <h1>Hi!</h1>
+    <!-- SIGN IN PAGE -->
+    <section data-role="page" id="signin-page">
+        <div data-role="main">
+            <form>
+                <input type="text">
+                <input type="password">
+                <a href="#recent-page"><button class="form-button">Sign In</button></a>
+            </form>
+            <div>
+                
+            </div>
+        </div>
+    </section>
+
+
+    <!-- RECENT PAGE -->
+    <section data-role="page" id="recent-page">
+        <div class="header">
+            <h1 style="padding: 0 7% 0 7%;">Map</h1>
+        </div>
+
+        <div data-role="main" onclick="myFunction()">
+            <div class="pin">
+                <div class="btn popup" id="myPopup">Pin House</div>
+            </div>
+          
+        </div>
+
+        <footer data-role="footer" class="nav">
+            <ul>
+                <li><a href="#user-profile-page">
+                    <img style="width: 2em;" src="img/icon_user.svg" alt=""></a></li>
+                <li><a href="#recent-page">
+                    <img style="width: 2em;" src="img/icon_location.svg" alt=""></a></li>
+                <li><a href="#pin-page"><img style="width: 2em;" src="img/icon_note.svg" alt=""></a></li>
+                
+            </ul>
+        </footer>
+
+    </section>
+
+
+    <!-- MY PINS PAGE -->
+    <section data-role="page" id="pin-page">
+        <!-- <div class="nav_back">
+            <a href="#recent-page"><img style="width: 2em;" src="img/icon_arrowback.svg" alt=""></a>        
+        </div> -->
+        <div class="header">
+            <h1 style="padding: 0 7% 0 7%;">My Pins</h1>
+        </div>
+        <!-- <header data-role="header">
+            My Pins
+        </header> -->
+        <div data-role="main" class="main">
+            <div class="pin-item">
+                <a href="#house-profile-page">
+                    <div class="content">
+                        <div class="content_img">
+                        
+                        </div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et beatae delectus aperiam deleniti optio assumenda quibusdam temporibus, aut odit omnis consectetur incidunt nostrum! Modi expedita magni ipsa, quibusdam aliquam quis.</p>
+                        <div class="content_title">
+                            <h2>House 1</h2>
+                            <h3>2022/08/30</h3>
+                        </div>
+                        
+                    </div>
+                </a>
+            </div>
+            <div class="pin-item">
+                <a href="#house-profile-page">
+                    <div class="content">
+                        <div class="content_img">
+                        
+                        </div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et beatae delectus aperiam deleniti optio assumenda quibusdam temporibus, aut odit omnis consectetur incidunt nostrum! Modi expedita magni ipsa, quibusdam aliquam quis.</p>
+                        <div class="content_title">
+                            <h2>House 2</h2>
+                            <h3>2022/08/30</h3>
+                        </div>
+                        
+                    </div>
+                </a>
+            </div>
+            <div class="pin-item">
+                <a href="#house-profile-page">
+                    <div class="content">
+                        <div class="content_img">
+                        
+                        </div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et beatae delectus aperiam deleniti optio assumenda quibusdam temporibus, aut odit omnis consectetur incidunt nostrum! Modi expedita magni ipsa, quibusdam aliquam quis.</p>
+                        <div class="content_title">
+                            <h2>House 3</h2>
+                            <h3>2022/08/30</h3>
+                        </div>
+                        
+                    </div>
+                </a>
+            </div>
+        </div>
+        <footer data-role="footer" class="nav">
+            <ul>
+                <li><a href="#user-profile-page">
+                    <img style="width: 2em;" src="img/icon_user.svg" alt=""></a></li>
+                <li><a href="#recent-page">
+                    <img style="width: 2em;" src="img/icon_location.svg" alt=""></a></li>
+                <li><a href="#pin-page"><img style="width: 2em;" src="img/icon_note.svg" alt=""></a></li>
+                
+            </ul>
+        </footer>
+    </section>
+
+
+    <!-- USER PROFILE PAGE -->
+    <section data-role="page" id="user-profile-page">
+        <div class="header">
+            <h1 style="padding: 0 7% 0 7%;">User Profile</h1>
+        </div>
+        <div data-role="main center">
+            <div class="profile">
+                <img src='https://dummyimage.com/600x600.jpg' alt="">
+                <h3>Eve Kung</h3>
+            </div>
+            <div class="accountinfo">
+                <div class="form-control">
+                    <label class="form-label">Email</label>
+                    <span>&dollar;$o->price</span>
+                </div>
+                <div class="form-control">
+                    <label class="form-label">Password</label>
+                </div>
+            </div>
+        </div>
+        <footer data-role="footer" class="nav">
+            <ul>
+                <li><a href="#user-profile-page">
+                    <img style="width: 2em;" src="img/icon_user.svg" alt=""></a></li>
+                <li><a href="#recent-page">
+                    <img style="width: 2em;" src="img/icon_location.svg" alt=""></a></li>
+                <li><a href="#pin-page"><img style="width: 2em;" src="img/icon_note.svg" alt=""></a></li>
+                
+            </ul>
+        </footer>
+
+    </section>
+
+
+    <!-- HOUSE PROFILE PAGE -->
+    <section data-role="page" id="house-profile-page">
+        <div class="nav_back">
+            <a href="#pin-page"><img style="width: 2em;" src="img/icon_arrowback.svg" alt=""></a>        
+        </div>
+
+        <div class="header">
+            <h1 style="padding: 0 7% 0 7%;">House #1</h1>
+        </div>
+
+        <div class="edit">
+            <div class="btn">
+                <a href="#house-edit-page">Edit</a></li>
+            </div>
+            
+        </div>
+        
+        <!-- <header data-role="header">
+            <h1>House Profile</h1> -->
+           
+        <!-- </header> -->
+        <div data-role="main" class="main center">
+            <div class="item-img"><img src="img/house1.jpg" alt=""></div>
+
+            <div class="description">
+                <p>
+                    House #1 description
+                </p>
+            </div>
+
+
+
+            
+        </div>
+    </section>
+
+
 </body>
 
 </html>

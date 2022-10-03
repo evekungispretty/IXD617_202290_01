@@ -1,0 +1,281 @@
+*, *::after, *::before {
+    box-sizing: border-box;
+}
+
+:root {
+    --font-header: Raleway;
+    --font-body: Oxygen;
+
+    --header-height: 3rem;
+    --body-height: 1.8em;
+    /* --color-main-rgb:
+    --color-main-hue */
+    --color-main-light: #FF99A9;
+    --color-main-medium: #FE6975;
+    --color-main-dark: #333333;
+    --color-main-neutral: #969595;
+    --color-neutral-light: #C3C3C3;
+    --box-shadow: rgb(149 157 165 / 20%) 0px 8px 24px;
+}
+
+body {
+    margin:0;
+    font-family: var(--font-body);
+}
+
+a {
+    text-decoration: none;
+    font-size: 0.8em;
+    color: var(--color-main-dark);
+
+}
+
+h1 {
+    font-size: 1.2em;
+    font-family: var(--font-header);
+}
+
+h2 {
+    font-size: 1.1em;
+}
+
+h3 {
+    font-size: 0.8em;
+    color: var(--color-main-neutral);
+    font-family: var(--font-header);
+
+}
+
+p {
+    font-family: var(--font-body);
+    font-weight: 400;
+    font-size: 0.8em;
+}
+
+/* App Structure */
+
+.ui-loader {
+    display:none
+}
+
+[data-role="page"] {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    overflow: hidden;
+}
+
+[data-role="page"].ui-page-active {
+    display: flex;
+    flex-direction: column;
+}
+
+[data-role="main"] {
+    flex: 1 1 100%;
+}
+
+[data-role="header"],
+[data-role="footer"] {
+    line-height: var(--header-height);
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    overflow: hidden;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    background-color: white;
+    /* box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); */
+    z-index: 2;
+}
+
+.nav li {
+    padding-top: 5%;
+    flex: 1 1 auto;
+    text-align: center;
+
+}
+
+.nav ul {
+    list-style-type: none;
+    margin:0;
+    padding:0;
+    display:flex;
+    width:100%;
+    position:relative;
+}
+
+
+.nav_back {
+    z-index: 10;
+    position: fixed;
+    top: 2%;
+    left: 5%;
+
+}
+
+.form-button {
+    border-radius: 8px;
+    font-family: var(--font-body);
+    font-size: 1em;
+    color: var(--color-main-dark);
+    background-color: var(--color-main-light);
+
+
+}
+
+/* Core Navigation */
+[data-role="header"] ul,
+[data-role="footer"] ul {
+    list-style-type: none;
+    margin:0;
+    padding:0;
+    display:flex;
+    width:100%;
+    position:relative;
+}
+[data-role="footer"] li {
+    flex: 1 1 auto;
+    text-align: center;
+}
+
+.active {
+    filter: invert(47%) sepia(68%) saturate(1180%) hue-rotate(320deg) brightness(109%) contrast(100%);
+  }
+
+
+.locate {
+    position: absolute;
+    border-radius: 8px;
+    top: 82%;
+    left: 42%;
+    object-fit: cover;
+    box-shadow: rgb(149 157 165 / 20%) 0px 8px 24px;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* Body Layout */
+
+.main {
+    padding: 0 5% 0 5%;
+}
+
+.center {
+    justify-content: center;
+}
+
+
+/* My Pins */
+.pin-item {
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 1.1em;
+    color: var(--color-main-dark);
+    box-shadow: var(--box-shadow);
+    padding: 2%;
+    margin: 5% 0 5% 0;
+}
+
+.content {
+    display: grid;
+    margin: 0% 5%;
+    row-gap: 1%;
+    column-gap: 4%;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: min-content min-content;
+}
+
+.content_img {
+    background-image: url("../../img/house1.jpg");
+    width: 35vw;
+    height: auto;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.content_title h3 {
+    margin-top: -10px;
+}
+
+
+.item-img img {
+    max-height: 30vh;
+}
+
+.profile img {
+    max-height: 10vh;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.btn {
+    display: flex;
+    justify-content: center;
+    padding: 3% 7%;
+    background-color: var(--color-main-medium);
+    margin: 5% 40%;
+    font-size: 0.8em;
+    font-weight: 600;
+    border-radius: 10px;
+    color: white;
+}
+
+.btn a {
+    color: white;
+}
+
+
+/* Map page */
+.pin {
+    width: 100vw;
+    height: 90vh;
+    /* position: relative;
+    display: inline-block;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none; */
+}
+
+.popup {
+    visibility: hidden;
+    width: 160px;
+    background-color: var(--color-main-medium);
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 0;
+    position: absolute;
+    z-index: 1;
+    top: 78%;
+    left: -12%;
+}
+
+.popup .show {
+    visibility: visible;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s;
+  }
+
+@-webkit-keyframes fadeIn {
+from {opacity: 0;} 
+to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+from {opacity: 0;}
+to {opacity:1 ;}
+}  

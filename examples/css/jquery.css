@@ -1,0 +1,75 @@
+.accordion dt {
+    background-color: rgb(214, 223, 223);
+    padding: 0.5em 1em;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    cursor: pointer;
+}
+
+.accordion dd {
+    padding: 1em;
+    margin-inline-start: 0%;
+    border: 2px solid rgb(214, 223, 223);
+    border-top-width: 0;
+    display: none;
+}
+
+.accordion dt~dt {
+    margin-top: 1em;
+}
+
+.tabgroup {
+    height: 40vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.tabset {
+    display: flex;
+    line-height: 3em;
+    flex: none;
+
+}
+
+.tab {
+    padding: 0 1em;
+}
+
+.tab:hover {
+    background-color: azure;
+}
+.tab::after {
+    content:'';
+    height: 0;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    
+
+}
+
+.tab.active::after{
+    content:'';
+}
+
+.contentset{
+    flex: 1 1 100%;
+    overflow: hidden;
+    position: relative;
+}
+.content{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    overflow: auto;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s;
+}
