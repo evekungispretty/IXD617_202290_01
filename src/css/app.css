@@ -236,6 +236,9 @@ p {
     color: white;
 }
 
+.signin {
+    margin: 2% 0; 
+}
 
 /* Map page */
 .pin {
