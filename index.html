@@ -13,11 +13,12 @@
 	
     <script src="src/js/app.js"></script>
     <script src="src/js/sigin.js"></script>
+    <script src="src/js/expand.js"></script>
+    <script src="src/js/alert.js"></script>
     <script src="lib/js/jquery.mobile-1.4.5.min.js"></script>
     <meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	
 </head>
 
 <body>
@@ -30,7 +31,7 @@
                     <h1>House Hunting</h1>
                 </div>
                 <div class="logo">
-                    <img style="width: 80vw;" src='https://dummyimage.com/500.gif' alt=''/>
+                    <img style="width: 50vw;" src='img/logo.svg' alt=''/>
 
                 </div>
             </div>
@@ -45,7 +46,7 @@
                     <input class="form-input" type="password" id="signin-password" data-role="none" placeholder="Type your Password">
                 </div>
                 <div class="form-controlbtn">
-                    <a href="#recent-page"><input type="submit" class="button-6" value="Log in" data-role="none"></a>
+                    <a href="#recent-page"><input class="button-6" value="Log in" data-role="none"></a>
                 </div>
                 <div class="form-control" style="text-align:center; font-size: 0.9em;">
                     Don't have an account? <a href="#signup-page" style="font-size: 0.9em;">Sign Up!</a>
@@ -77,7 +78,7 @@
                     <input class="form-input" type="password" id="signup-confirm" data-role="none" placeholder="Type your Password">
                 </div>
                 <div class="form-controlbtn">
-                    <input type="submit" class="button-6" value="Create Account" data-role="none">
+                    <input class="button-6" value="Create Account" data-role="none">
                 </div>
                 <div class="form-control" style="text-align:center; font-size: 0.9em;">
                     Already have an account? <a href="#signin-page" style="font-size: 0.9em;">Sign In!</a>
@@ -88,32 +89,41 @@
 
         <!-- Onboarding Pages -->
         <section data-role="page" id="onboarding1">
-            <div data-role="main onboarding" class="display-flex flex-column">
-                <h1>House Hunting</h1>
+            <div data-role="main" class="main">
+                <div class="onboardingimg">
+                    <img style="width: 60vw;" src="img/onboarding01.png" alt="">
+                </div>
+                <div class="onboardingd">
+                    <h1>House Hunting</h1>
+                    <p>Look for pink houses in San Francisco!</p>
+                </div>
+                
             </div>
     
             <div class="next">
-                <a href="#onboarding2"><input type="submit" class="button-6" value="Next" data-role="none"></a>
+                <a href="#onboarding2"><input class="button-6" value="Next" data-role="none"></a>
             </div>
         </section>
     
         <section data-role="page" id="onboarding2">
-            <div data-role="main onboarding" class="display-flex flex-column">
+            <div data-role="main" class="main">
                 <h1>Take a photo</h1>
+                <p>Upload it and take some notes alongside!</p>
             </div>
     
             <div class="next">
-                <a href="#onboarding3"><input type="submit" class="button-6" value="Next" data-role="none"></a>
+                <a href="#onboarding3"><input class="button-6" value="Next" data-role="none"></a>
             </div>
         </section>
     
         <section data-role="page" id="onboarding3">
-            <div data-role="main onboarding" class="display-flex flex-column">
+            <div data-role="main" class="main">
                 <h1>Pin it!</h1>
+                <p>Let's get lost in these creative, beautiful and flashy houses.</p>
             </div>
     
             <div class="next">
-                <a href="#recent-page"><input type="submit" class="button-6" value="Get Started" data-role="none"></a>
+                <a href="#recent-page"><input class="button-6" value="Get Started" data-role="none"></a>
             </div>
         </section>
     
@@ -132,6 +142,9 @@
             <div class="floater top left">
                 <a href="#" class="btn-circle" data-activate="#recent-add-modal"><img style="width: 100%;" src="img/pin.png" alt=""></a>
             </div>
+            <div class="icon">
+                <a href="#house-profile-page"><img style="width: 24px;" src="img/logo.svg" alt="">
+            </div>
             <div id="recent-add-modal" class="modal">
                 <div class="modal-back transparent" data-deactivate="#recent-add-modal"></div>
                 <div class="modal-drawer left">
@@ -139,8 +152,17 @@
                         <h2>Add a Pin</h2></div>
                     <div class="modal-body">
                         <!-- <h3>Add a description</h3> -->
-                        <label class="form-label" for="pin-description">Description</label>
-                        <input class="form-input" type="password" id="description" data-role="none" placeholder="Add a description for your pin">
+                        <label class="form-label" for="pin-title">Title</label>
+                        <input class="form-input addapin_input" type="text" id="input-title" data-role="none" placeholder="Title">
+                        <label class="form-label " for="pin-description">Description</label>
+                        <input class="form-input addapin_input" type="text" id="description" data-role="none" placeholder="Add a description for your pin">
+                        <label class="form-label" for="pin-image">Image</label>
+                        <input type="file" id="input-image" data-role="none">
+                        <div class="form-controlbtn">
+                            <div onclick="info_prompt('Saved!');">
+                            <input class="button-6" value="Add Pin" data-deactivate="#recent-add-modal" data-role="none"></div>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -234,26 +256,57 @@
         <div class="header">
             <h1 style="padding: 0 7% 0 7%;">User Profile</h1>
         </div>
-        <div data-role="main center">
+        <div data-role="main center" class="main">
             <div class="profile">
                 <img src='img/avator.jpg' alt="">
                 <h3>Eve Kung</h3>
             </div>
+
+            <div class="ugh">
+                <div class="card">
+                    <h1>20</h1>
+                    <p>Pins</p>
+                </div>
+                <div class="card">
+                    <h1>20</h1>
+                    <p>Photos</p>
+                </div>
+                <div class="card">
+                    <h1>20</h1>
+                    <p>Views</p>
+                </div>
+            </div>
+    
+    
         </div>
-        <form class="form" id="form-logout" data-ajax="false">
-            <div class="warning"></div>
-            <div class="form-control">
-                <label class="form-label" for="signin-username">Email</label>
-                <input class="form-input" type="text" id="email" data-role="none" placeholder="10evelyn04@gmail.com">
-            </div>
-            <div class="form-control">
-                <label class="form-label" for="signin-password">Password</label>
-                <input class="form-input" type="password" id="password" data-role="none" placeholder="********">
-            </div>
-            <div class="form-control-logout">
-                <a href="#signin-page"><input type="submit" class="button-6" value="Log Out" data-role="none"></a>
-            </div>
-        </form>
+
+
+
+
+        <!-- ACCOUNT INFO -->
+        <div class="flip"><span class="1"> <h2>Account Information <span style="font-size: 0.5em;">&#9660;</span></h2></span></div>
+    
+        <div class="panel">
+           
+            <form class="form" id="form-logout" data-ajax="false">
+                <div class="warning"></div>
+                <div class="form-control">
+                    <label class="form-label" for="signin-username">Email</label>
+                    <input class="form-input" type="text" id="email" data-role="none" placeholder="10evelyn04@gmail.com">
+                </div>
+                <div class="form-control">
+                    <label class="form-label" for="signin-password">Password</label>
+                    <input class="form-input" type="password" id="password" data-role="none" placeholder="********">
+                </div>
+                <div class="form-control-logout">
+                    <a href="#signin-page"><input style="
+                        width: 80%;" class="button-6" value="Log Out" data-role="none"></a>
+                </div>
+            </form>
+        </div>
+        
+
+
         <footer data-role="footer" class="nav">
             <ul>
                 <li><a href="#user-profile-page">
@@ -280,7 +333,7 @@
 
         <div class="edit">
             <div class="button_small">
-                <a href="#house-edit-page">Edit</a></li>
+                <a href="#edit-page">Edit</a></li>
             </div>
             
         </div>
@@ -303,6 +356,55 @@
             
         </div>
     </section>
+
+
+    <!-- Edit House -->
+    <section data-role="page" id="edit-page">
+        <div class="nav_back" style="top: 1%;">
+            <a href="#house-profile-page">
+            <p style="font-size: 0.9em; color: var(--color-neutral-medium);">Cancel</p>       
+            </a>
+        </div>
+
+        <div class="header">
+            <h1 style="padding: 0 7% 0 7%;">Edit House #1</h1>
+        </div>
+
+        <div class="edit">
+            <div class="button_small" onclick="info_prompt('Saved!');">
+                <a href="#house-profile-page">Done</a></li>
+            </div>
+            
+        </div>
+
+        <div data-role="main" class="main">
+            <div class="edit_img">
+                <div class="one">
+                    <img style="width:80vw;" src="img/house1.jpg" alt="">
+                </div>
+                
+                <div class="two">
+                    <label class="form-label" for="pin-image">Replace Image</label>
+                    <input type="file" id="input-image" data-role="none">
+                </div>
+            </div>
+
+            <div class="edit_text">
+                <label class="form-label " for="pin-description">Description</label>
+                <!-- <input class="form-input addapin_input" type="text" id="description" data-role="none" placeholder="LoremDeserunt enim sunt elit consequat enim est nostrud non tempor."> -->
+                <textarea placeholder="Ex excepteur ad labore cupidatat laboris ipsum adipisicing nisi."></textarea>
+            </div>
+
+
+
+
+        </div>
+
+
+
+
+    </section>
+
 
 
 </body>
