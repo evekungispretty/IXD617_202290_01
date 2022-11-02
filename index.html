@@ -15,7 +15,7 @@
     <script src="src/js/sigin.js"></script>
     <script src="src/js/expand.js"></script>
     <script src="src/js/alert.js"></script>
-    <!-- <script src="src/js/navbar.js"></script> -->
+ 
     <script src="lib/js/jquery.mobile-1.4.5.min.js"></script>
     <meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -32,6 +32,7 @@
                     <h1>House Hunting</h1>
                 </div>
                 <div class="logo">
+                    <!-- Code reference https://codepen.io/luishodesign/pen/jOWqwzQ -->
                     <svg width="68" height="66" viewBox="0 0 68 66" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g id="art">
                         <mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="68" height="66">
@@ -128,7 +129,12 @@
                 </div>
             </div>
             <form class="form" id="signin-form" data-ajax="false">
-                <div class="warning"></div>
+                <div class="warning">
+                    <p>The username or the password is incorrect, try it again.</p>
+                </div>
+                <!-- <div class="signIn-note">
+                    <h1 id="signInPageError_slot" style="color: var(--color-neutral-medium);">Heeeey! Let's find some pink houses!</h1>
+                </div> -->
                 <div class="form-control">
                     <label class="form-label" for="signin-username">Username</label>
                     <input class="form-input" type="text" id="signin-username" data-role="none" placeholder="Type your Username">
@@ -138,10 +144,10 @@
                     <input class="form-input" type="password" id="signin-password" data-role="none" placeholder="Type your Password">
                 </div>
                 <div class="form-controlbtn">
-                    <a href="#onboarding1"><input class="button-6" value="Log in" data-role="none"></a>
+                    <input type="submit" class="button-6" value="Sign In" data-role="none">
                 </div>
                 <div class="form-control" style="text-align:center; font-size: 0.9em;">
-                    Don't have an account? <a href="#signup-page" style="font-size: 0.9em;">Sign Up!</a>
+                    Don't have an account? <a href="#signup-page" style="background-color:white; font-size: 0.9em; color: var(--color-main-medium); font-weight: 700;">Sign Up!</a>
                 </div>
             </form>
         </div>
@@ -170,10 +176,10 @@
                     <input class="form-input" type="password" id="signup-confirm" data-role="none" placeholder="Type your Password">
                 </div>
                 <div class="form-controlbtn">
-                    <input class="button-6" value="Create Account" data-role="none">
+                    <input type="submit" class="button-6" value="Create Account" data-role="none">
                 </div>
                 <div class="form-control" style="text-align:center; font-size: 0.9em;">
-                    Already have an account? <a href="#signin-page" style="font-size: 0.9em;">Sign In!</a>
+                    Already have an account? <a href="#signin-page" style="font-size: 0.9em; color: var(--color-main-medium); font-weight: 700;">Sign In!</a>
                 </div>
             </form>
         </div>
@@ -208,7 +214,7 @@
                     <p>Look for pink houses in San Francisco!</p>
                 </div>
                 <div class="next">
-                    <a href="#onboarding2"><input class="button-6" value="Next" data-role="none"></a>
+                    <a href="#onboarding2" class="button-6">Next</a>
                 </div>
             </div>
     
@@ -231,7 +237,7 @@
                     <p>upload a photo and take some notes alongside!</p>
                 </div>
                 <div class="next">
-                    <a href="#onboarding3"><input class="button-6" value="Next" data-role="none"></a>
+                    <a href="#onboarding3" class="button-6">Next</a>
                 </div>
             </div>
     
@@ -254,7 +260,7 @@
                     <p>Let's get lost in these creative, beautiful and flashy houses.</p>
                 </div>
                 <div class="next">
-                    <a href="#recent-page"><input class="button-6" value="Next" data-role="none"></a>
+                    <a href="#recent-page" class="button-6">Get Started</a>
                 </div>
             </div>
     
@@ -276,9 +282,10 @@
                 <a href="#" class="btn-circle" data-activate="#recent-add-modal"><img style="width: 100%;" src="img/map_pin.svg" alt=""></a>
             </div>
             <div class="icon">
-                <a href="#house-profile-page"><img style="width: 24px;" src="img/logo.svg" alt="">
+                <a href="#house-profile-page"><img style="width: 24px;" src="img/logo.svg" alt=""></a>
             </div>
-            <div id="recent-add-modal" class="modal">
+
+        <div id="recent-add-modal" class="modal">
                 <div class="modal-back transparent" data-deactivate="#recent-add-modal"></div>
                 <div class="modal-drawer left">
                     <div class="modal-head">
@@ -298,7 +305,8 @@
 
                     </div>
                 </div>
-            </div>
+        </div>
+          
           
         </div>
 
@@ -306,7 +314,7 @@
             <ul>
                 <li class="navli"><a href="#user-profile-page">
                     <img style="width: 2em;" src="img/icon_user.svg" alt=""></a></li>
-                <li class="navli active"><a href="#recent-page">
+                <li class="navli navactive"><a href="#recent-page">
                     <img style="width: 2em;" src="img/icon_location.svg" alt=""></a></li>
                 <li class="navli"><a href="#pin-page"><img style="width: 2em;" src="img/icon_note.svg" alt=""></a></li>
                 
@@ -407,7 +415,7 @@
                     <img style="width: 2em;" src="img/icon_user.svg" alt=""></a></li>
                 <li class="navli"><a href="#recent-page">
                     <img style="width: 2em;" src="img/icon_location.svg" alt=""></a></li>
-                <li class="navli active"><a href="#pin-page"><img style="width: 2em;" src="img/icon_note.svg" alt=""></a></li>
+                <li class="navli navactive"><a href="#pin-page"><img style="width: 2em;" src="img/icon_note.svg" alt=""></a></li>
                 
             </ul>
         </footer>
@@ -439,15 +447,11 @@
                     <p>Views</p>
                 </div>
             </div>
-    
-    
-        </div>
-
 
 
 
         <!-- ACCOUNT INFO -->
-        <div class="flip"><span class="1"> <h2>Account Information <span style="font-size: 0.5em;">&#9660;</span></h2></span></div>
+        <div class="flip"><span class="1" style="line-height: 45px;"> <h2>Account Information <span style="font-size: 0.5em;">&#9660;</span></h2></span></div>
     
         <div class="panel">
            
@@ -470,10 +474,16 @@
         </div>
         
 
+    
+    
+        </div>
+
+
+
 
         <footer data-role="footer" class="nav">
             <ul>
-                <li class="navli active"><a href="#user-profile-page">
+                <li class="navli navactive"><a href="#user-profile-page">
                     <img style="width: 2em;" src="img/icon_user.svg" alt=""></a></li>
                 <li class="navli"><a href="#recent-page">
                     <img style="width: 2em;" src="img/icon_location.svg" alt=""></a></li>

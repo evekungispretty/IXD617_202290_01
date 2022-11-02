@@ -1,6 +1,5 @@
 
-
-const checkSigninForm = () => {
+export const checkSigninForm = () => {
     const userval = $("#signin-username").val();
     const passval = $("#signin-password").val();
 
@@ -17,15 +16,16 @@ const checkSigninForm = () => {
         console.log("Failure");
         sessionStorage.removeItem("userId");
 
-        $(".warning").html("");
-        setTimeout(()=>{$(".warning").html("");},3000)
+        $(".warning").css("display", "block");
+        setTimeout(()=>{$(".warning").css("display", "none");},3000)
+        console.log("Failure");
     }
 
     checkUserId();
 }
 
 
-const checkUserId = () => {
+export const checkUserId = () => {
     const pages = ["#signin-page", "#signup-page", ""];
 
     if (sessionStorage.userId === undefined) {
@@ -36,7 +36,7 @@ const checkUserId = () => {
     } else {
         // logged in
         if (pages.some(p => p === window.location.hash)) {
-            $.mobile.navigate("#recent-page");
+            $.mobile.navigate("#onboarding1");
         }
     }
 }

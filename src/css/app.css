@@ -107,6 +107,10 @@ p {
     margin: 1em 0;
     display: flex;
 }
+
+.warning {
+    display: none;
+}
 /* GENERAL */
 
 svg {
@@ -325,7 +329,7 @@ svg {
     width: 100%;
     height: 100%;
     display: none;
-    overflow: auto;
+    overflow: hidden;
 }
 
 [data-role="page"].ui-page-active {
@@ -335,12 +339,17 @@ svg {
 
 [data-role="main"] {
     flex: 1 1 100%;
+    /* position: relative; */
+    z-index: 1;
+    height: 100%;
+    overflow: auto;
+    overflow-x: hidden;
 }
 
 [data-role="header"],
 [data-role="footer"] {
     line-height: var(--header-height);
-    position: fixed;
+    position: relative;
     bottom: 0;
     width: 100%;
     overflow: hidden;
@@ -366,9 +375,9 @@ svg {
     position:relative;
 }
 
-.active {
+/* .navactive {
     border-top:2px solid var(--color-main-medium);
-}
+} */
 
 
 .nav_back {
@@ -437,6 +446,7 @@ svg {
 
 .main {
     padding: 0 5% 0 5%;
+    height: 100%;
 }
 
 .center {

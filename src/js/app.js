@@ -67,13 +67,26 @@ var color2 = "#"+((r2 << 16) | (g2 << 8) | b2).toString(16);
 
 setInterval(updateGradient,50);
 
+import { checkSigninForm, checkUserId } from "./sigin.js";
+
 // Document Ready
 $(() => {
 
   checkUserId();
 
-$(document)
-  
+  $(document)
+
+  .on("pagecontainerbeforeshow", function(event, ui) {
+    switch(ui.toPage[0].id) {
+      case "recent-page": RecentPage("honk"); break;
+      case "pin-page": PinPage("honk"); break;
+      case "house-profile-page": HousePage("honk"); break;
+      case "user-profile-page": UserPage("honk"); break;
+  }
+  })
+
+   // EVENT DELEGATION
+
   .on("submit", "#signin-form", function(e) {
     e.preventDefault();
     checkSigninForm();
