@@ -5,9 +5,11 @@ const getdate = (d1,d2) => dayjs(new Date(chance.natural({min:d1,max:d2}))).form
 
 const animaltype = (type) => {
     let types = {
-        'dog':['poodle','pug','pitbull'],
-        'cat':['calico','ginger','siamese','fat','stray'],
-        'horse':['black','brown','unicorn']
+        'Queen Anne':['1','2','3', '4','5 or more'],
+        'Gothic Revival':['1','2','3', '4','5 or more'],
+        'Tudor Revival':['1','2','3', '4','5 or more'],
+        'Mission Revival':['1','2','3', '4','5 or more'],
+        'Rousseau Homes':['1','2','3', '4','5 or more']
     }
     return chance.pickone(types[type]);
 }
@@ -29,7 +31,7 @@ const getAnimals = () => (new Array(50)).fill(0).map((o,i)=>{
     o.id = i + 1;
     o.user_id = chance.natural({min:1, max:10});
     o.name = chance.first();
-    o.type = chance.pickone(['dog','cat','horse']);
+    o.type = chance.pickone(['Queen Anne','Gothic Revival','Tudor Revival', 'Mission Revival','Rousseau Homes']);
     o.floor = animaltype(o.type);
     o.description = chance.sentence();
     o.img = `https://via.placeholder.com/${num()}x${num()}/${hex()}/fff/?text=${o.name}`;

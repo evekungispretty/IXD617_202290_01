@@ -379,6 +379,7 @@ svg {
     border-top:2px solid var(--color-main-medium);
 } */
 
+.flex-stretch { flex: 1 1 auto; }
 
 .nav_back {
     z-index: 10;
@@ -412,11 +413,17 @@ svg {
     display:flex;
     width:100%;
     position:relative;
+    padding-bottom: 5%;
 }
 [data-role="footer"] li {
     flex: 1 1 auto;
     text-align: center;
 }
+[data-role="header"] {
+    padding: 0% 5%;
+
+}
+
 
 /* .active {
     filter: invert(47%) sepia(68%) saturate(1180%) hue-rotate(320deg) brightness(109%) contrast(100%);
@@ -456,6 +463,14 @@ svg {
 
 
 /* My Pins */
+
+.houselist {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 3%;
+    row-gap: 1%;
+
+}
 #pin-page {
     background-color: #fff1f3;
 }
@@ -465,32 +480,37 @@ svg {
     font-size: 1.1em;
     color: var(--color-main-dark);
     box-shadow: var(--box-shadow);
-    padding: 2%;
     margin: 5% 0 5% 0;
     background-color: white;
     border-radius: 10px;
 }
 
-.content {
+.content-container {
     display: grid;
-    margin: 0% 5%;
     row-gap: 1%;
-    column-gap: 4%;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: min-content min-content;
+    column-gap: 1%;
+    grid-template-rows: 1fr min-content;
+    background-color: rgba(255, 255, 255, 0.57);
+    border-radius: 10px;
 }
 
-.content_img {
-    background-image: url("../../img/house1.jpg");
-    width: 35vw;
-    height: auto;
-    background-repeat: no-repeat;
-    background-size: cover;
+.content_img img{
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    object-position: center;
+    vertical-align: text-bottom;
+    border-radius: 10px 10px 0 0;
 }
 
+.content_title {
+    padding: 0 3%;
+}
 .content_title h3 {
     margin-top: -10px;
 }
+
+
 
 /* House profile page */
 .edit {
@@ -504,9 +524,16 @@ svg {
 .item-img {
     display: flex;
     justify-content: center;
+    width: 100vw;
+    height: 40vh;
+    background-size: cover;
+    background-position: center;
 }
 .item-img img {
     max-height: 30vh;
+    width: 100vw;
+    object-fit: cover;
+    object-position: center;
 }
 
 /* User Profile */
@@ -569,10 +596,12 @@ svg {
 
 
 .map {
-    background-image: url(../../img/map01.png);
+    /* background-image: url(../../img/map01.png);
     background-repeat: no-repeat;
     background-position: center;
-    background-size: cover;
+    background-size: cover; */
+    width: 100%;
+    height: 100%;
 }
 
 .pin {
@@ -721,7 +750,10 @@ input [type="submit"]{
   opacity: 1;
 }
 
-.floater { position:fixed; }
+.floater { 
+    position:fixed;
+    z-index: 4;
+ }
 .floater.top { top: 80%; }
 .floater.right { right: 1rem; }
 .floater.bottom { bottom: 1rem; }
@@ -875,6 +907,16 @@ textarea {
     font-size: 0.8em;
 }
 
+.edit_type {
+    margin: 5%;
+    padding-top: 5%;
+}
+
+.edit_floor {
+    margin: 5%;
+    padding-top: 5%;
+}
+
 .alert {
     display: none;
     position: fixed;
@@ -960,7 +1002,7 @@ textarea {
 
 
 .panel {
-    display: none;
+    display: flex;
     margin: -6% 5%;
     background-color: white;
 }

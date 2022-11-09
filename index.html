@@ -11,12 +11,13 @@
 	
 	<script src="lib/js/jquery-2.2.4.min.js"></script>
 	
-    <script src="src/js/app.js"></script>
-    <script src="src/js/sigin.js"></script>
-    <script src="src/js/expand.js"></script>
+    <script type="module" src="src/js/app.js"></script>
+    <script src="src/js/gradient.js"></script>
     <script src="src/js/alert.js"></script>
- 
     <script src="lib/js/jquery.mobile-1.4.5.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAL5fUtgRtyuChwiPT0aCCNTBDc3xe-d6A"
+    defer></script>
+
     <meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -276,13 +277,15 @@
         <div class="header">
             <h1 style="padding: 0 7% 0 7%;">Map</h1>
         </div>
+        
 
-        <div data-role="main" class="map">
+        <div data-role="main">
             <div class="floater top left">
-                <a href="#" class="btn-circle" data-activate="#recent-add-modal"><img style="width: 100%;" src="img/map_pin.svg" alt=""></a>
+                <a href="#" class="btn-circle" data-activate="#recent-add-modal"><img style="width: 100%;" src="img/add.svg" alt=""></a>
             </div>
-            <div class="icon">
-                <a href="#house-profile-page"><img style="width: 24px;" src="img/logo.svg" alt=""></a>
+
+            <div class="map">
+
             </div>
 
         <div id="recent-add-modal" class="modal">
@@ -315,7 +318,7 @@
                 <li class="navli"><a href="#user-profile-page">
                     <img style="width: 2em;" src="img/icon_user.svg" alt=""></a></li>
                 <li class="navli navactive"><a href="#recent-page">
-                    <img style="width: 2em;" src="img/icon_location.svg" alt=""></a></li>
+                    <img style="width: 2em;" src="img/map.svg" alt=""></a></li>
                 <li class="navli"><a href="#pin-page"><img style="width: 2em;" src="img/icon_note.svg" alt=""></a></li>
                 
             </ul>
@@ -326,95 +329,18 @@
 
     <!-- MY PINS PAGE -->
     <section data-role="page" id="pin-page">
-        <!-- <div class="nav_back">
-            <a href="#recent-page"><img style="width: 2em;" src="img/icon_arrowback.svg" alt=""></a>        
-        </div> -->
         <div class="header">
             <h1 style="padding: 0 7% 0 7%;">My Pins</h1>
         </div>
         <div data-role="main" class="main">
-            <div class="pin-item">
-                <a href="#house-profile-page">
-                    <div class="content">
-                        <div class="content_img">
-                        
-                        </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et beatae delectus aperiam deleniti optio assumenda quibusdam temporibus, aut odit omnis consectetur incidunt nostrum! Modi expedita magni ipsa, quibusdam aliquam quis.</p>
-                        <div class="content_title">
-                            <h2>House 1</h2>
-                            <h3>2022/08/30</h3>
-                        </div>
-                        
-                    </div>
-                </a>
-            </div>
-            <div class="pin-item">
-                <a href="#house-profile-page">
-                    <div class="content">
-                        <div class="content_img">
-                        
-                        </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et beatae delectus aperiam deleniti optio assumenda quibusdam temporibus, aut odit omnis consectetur incidunt nostrum! Modi expedita magni ipsa, quibusdam aliquam quis.</p>
-                        <div class="content_title">
-                            <h2>House 2</h2>
-                            <h3>2022/08/30</h3>
-                        </div>
-                        
-                    </div>
-                </a>
-            </div>
-            <div class="pin-item">
-                <a href="#house-profile-page">
-                    <div class="content">
-                        <div class="content_img">
-                        
-                        </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et beatae delectus aperiam deleniti optio assumenda quibusdam temporibus, aut odit omnis consectetur incidunt nostrum! Modi expedita magni ipsa, quibusdam aliquam quis.</p>
-                        <div class="content_title">
-                            <h2>House 3</h2>
-                            <h3>2022/08/30</h3>
-                        </div>
-                        
-                    </div>
-                </a>
-            </div>
-            <div class="pin-item">
-                <a href="#house-profile-page">
-                    <div class="content">
-                        <div class="content_img">
-                        
-                        </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et beatae delectus aperiam deleniti optio assumenda quibusdam temporibus, aut odit omnis consectetur incidunt nostrum! Modi expedita magni ipsa, quibusdam aliquam quis.</p>
-                        <div class="content_title">
-                            <h2>House 1</h2>
-                            <h3>2022/08/30</h3>
-                        </div>
-                        
-                    </div>
-                </a>
-            </div>
-            <div class="pin-item">
-                <a href="#house-profile-page">
-                    <div class="content">
-                        <div class="content_img">
-                        
-                        </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et beatae delectus aperiam deleniti optio assumenda quibusdam temporibus, aut odit omnis consectetur incidunt nostrum! Modi expedita magni ipsa, quibusdam aliquam quis.</p>
-                        <div class="content_title">
-                            <h2>House 1</h2>
-                            <h3>2022/08/30</h3>
-                        </div>
-                        
-                    </div>
-                </a>
-            </div>
+            <div class="houselist"></div>
         </div>
         <footer data-role="footer" class="nav">
             <ul>
                 <li class="navli"><a href="#user-profile-page">
                     <img style="width: 2em;" src="img/icon_user.svg" alt=""></a></li>
                 <li class="navli"><a href="#recent-page">
-                    <img style="width: 2em;" src="img/icon_location.svg" alt=""></a></li>
+                    <img style="width: 2em;" src="img/map.svg" alt=""></a></li>
                 <li class="navli navactive"><a href="#pin-page"><img style="width: 2em;" src="img/icon_note.svg" alt=""></a></li>
                 
             </ul>
@@ -424,15 +350,16 @@
 
     <!-- USER PROFILE PAGE -->
     <section data-role="page" id="user-profile-page">
+        <script src="src/js/expand.js"></script>
         <div class="header">
             <h1 style="padding: 0 7% 0 7%;">User Profile</h1>
         </div>
         <div data-role="main center" class="main">
-            <div class="profile">
-                <img src='img/avator.jpg' alt="">
-                <h3>Eve Kung</h3>
+            <div class="profilepage">
+
             </div>
 
+<!-- 
             <div class="ugh">
                 <div class="card">
                     <h1>20</h1>
@@ -447,11 +374,11 @@
                     <p>Views</p>
                 </div>
             </div>
-
+ -->
 
 
         <!-- ACCOUNT INFO -->
-        <div class="flip"><span class="1" style="line-height: 45px;"> <h2>Account Information <span style="font-size: 0.5em;">&#9660;</span></h2></span></div>
+        <!-- <div class="flip"><span class="1" style="line-height: 45px;"> <h2>Account Information <span style="font-size: 0.5em;">&#9660;</span></h2></span></div>
     
         <div class="panel">
            
@@ -472,21 +399,16 @@
                 </div>
             </form>
         </div>
-        
+         -->
 
-    
     
         </div>
-
-
-
-
         <footer data-role="footer" class="nav">
             <ul>
                 <li class="navli navactive"><a href="#user-profile-page">
                     <img style="width: 2em;" src="img/icon_user.svg" alt=""></a></li>
                 <li class="navli"><a href="#recent-page">
-                    <img style="width: 2em;" src="img/icon_location.svg" alt=""></a></li>
+                    <img style="width: 2em;" src="img/map.svg" alt=""></a></li>
                 <li class="navli"><a href="#pin-page"><img style="width: 2em;" src="img/icon_note.svg" alt=""></a></li>
                 
             </ul>
@@ -497,38 +419,28 @@
 
     <!-- HOUSE PROFILE PAGE -->
     <section data-role="page" id="house-profile-page">
-        <div class="nav_back">
-            <a href="#pin-page"><img style="width: 2em;" src="img/icon_arrowback.svg" alt=""></a>        
-        </div>
+        <header data-role="header">
+            <h1></h1>
+            <ul>
+                <li><a href="#pin-page"><img style="width: 2em;" src="img/icon_arrowback.svg" alt=""></a></li>
+                <li class="flex-stretch"></li>
+                <li><a href="#edit-page"><img style="width: 25px;" src="img/edit.svg" alt=""></a></li>
+            </ul>
+        </header>
 
-        <div class="header">
-            <h1 style="padding: 0 7% 0 7%;">House #1</h1>
-        </div>
-
-        <div class="edit">
-            <div class="button_small">
-                <a href="#edit-page">Edit</a></li>
-            </div>
-            
+        <div data-role="main">
+            <div class="house-profile"></div>
         </div>
         
-        <!-- <header data-role="header">
-            <h1>House Profile</h1> -->
-           
-        <!-- </header> -->
-        <div data-role="main" class="main center">
-            <div class="item-img"><img src="img/house1.jpg" alt=""></div>
+   
 
-            <div class="description">
-                <p>
-                    House #1 description
-                </p>
-            </div>
-
+        <!-- <div data-role="main" class="main center">
+            <div class="house-profile"></div>
+            
 
 
             
-        </div>
+        </div> -->
     </section>
 
 
@@ -541,7 +453,7 @@
         </div>
 
         <div class="header">
-            <h1 style="padding: 0 7% 0 7%;">Edit House #1</h1>
+            <h1 style="padding: 0 7% 0 7%;">Edit</h1>
         </div>
 
         <div class="edit">
@@ -552,26 +464,7 @@
         </div>
 
         <div data-role="main" class="main">
-            <div class="edit_img">
-                <div class="one">
-                    <img style="width:80vw;" src="img/house1.jpg" alt="">
-                </div>
-                
-                <div class="two">
-                    <label class="form-label" for="pin-image">Replace Image</label>
-                    <input type="file" id="input-image" data-role="none">
-                </div>
-            </div>
-
-            <div class="edit_text">
-                <label class="form-label " for="pin-description">Description</label>
-                <!-- <input class="form-input addapin_input" type="text" id="description" data-role="none" placeholder="LoremDeserunt enim sunt elit consequat enim est nostrud non tempor."> -->
-                <textarea placeholder="Ex excepteur ad labore cupidatat laboris ipsum adipisicing nisi."></textarea>
-            </div>
-
-
-
-
+            <div class="house-edit"></div>
         </div>
 
 
