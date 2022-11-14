@@ -16,6 +16,7 @@ $(() => {
       case "recent-page": RecentPage(); break;
       case "pin-page": PinPage(); break;
       case "house-profile-page": HousePage(); break;
+      // case "house-card-page": HouseCardPage(); break;
       case "user-profile-page": UserPage(); break;
       case "edit-page": HouseEditPage(); break;
   }
@@ -29,7 +30,17 @@ $(() => {
 })
 
 
-  
+// .on("click", "[data-house-card]", function(e) {
+//   let id = $(this).data("house-card");
+
+//   sessionStorage.userid = id;
+// })
+
+.on("load", "[data-user-house]", function(e) {
+  let id = $(this).data("user-house");
+
+  sessionStorage.userHouseId= id;
+})
 
 
 

@@ -1,6 +1,21 @@
 import { templater } from "./function.js";
 
 
+export const makeHouseCard = templater(({id,name,type,date_create,img})=>`
+<a href="#house-profile-page" style="width: 90vw;" data-house-card="${id}">
+    <div id="housecard" class="card-container">
+            <div class="card_img"><img style=" width: 100px; height: 100px; object-fit: cover;" src="${img}"></div>
+            <div class="card_title">
+                <h2>${name}</h2>
+                <h3>${type}</h3>
+                <div class="card_date">
+                    <h3>${date_create}</h3>
+                </div>
+            </div>
+    </div>
+</a>
+`)
+
 
 export const makeHouseList = templater(({id,name,type,date_create,img})=>`
 <a class="pin-item animal-jump" href="#house-profile-page" data-house-id="${id}">
@@ -17,7 +32,7 @@ export const makeHouseList = templater(({id,name,type,date_create,img})=>`
 </a>
 `)
 
-export const makeUserProfilePage = ({name,email,username,img})=>`
+export const makeUserProfilePage = ({id,name,email,username,img})=>`
 <div>
     <div class="profile">
         <img src="${img}" alt="">
@@ -41,15 +56,48 @@ export const makeUserProfilePage = ({name,email,username,img})=>`
 </div>
 `
 
+export const makeUserHouse = templater(({id, img})=>`
+<a href="#house-profile-page" data-user-house="${id}"">
+     <img style="width:30vw;" src="${img}" alt="">
+</a>
+
+`)
+
     
 export  const makeHouseProfile = templater(({id,type,floor,img,date_create,description})=>{
     return `
     <div class="item-img"><img src="${img}" alt=""></div>
-    <div class="houese-profile-map"></div>
-    <div class="type">${type}</div>
-    <div class="floor">${floor}</div>
-    <div class="house-profile-section section-description">${description}</div>
-    <div>${date_create}</div>
+    <div class="container-item">
+        <div class="container-profile">
+            <div><img src="./img/icon_type.svg" alt=""></div>
+            <div class="type">
+                <h2>House Type</h2>
+                ${type}
+            </div>
+        </div>
+
+        <div class="container-profile">
+            <div><img src="./img/icon_floor.svg" alt=""></div>
+            <div class="floor">
+                <h2>Floor</h2>
+                ${floor}
+            </div>
+        </div>
+        
+    </div>
+
+    <div class="divider"></div>
+   
+    
+    <div class="container-description">
+        <div>
+            <h2>Description</h2>
+            ${description}
+        </div>
+    </div>
+        
+    <div style=" color:var(--color-neutral-light); font-size:0.7em;">${date_create}</div>
+
     `
     })
 

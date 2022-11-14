@@ -279,7 +279,8 @@
         </div>
         
 
-        <div data-role="main">
+        <div data-role="main" class="homepage">
+            <div class="card_small"></div>
             <div class="floater top left">
                 <a href="#" class="btn-circle" data-activate="#recent-add-modal"><img style="width: 100%;" src="img/add.svg" alt=""></a>
             </div>
@@ -315,11 +316,24 @@
 
         <footer data-role="footer" class="nav">
             <ul>
-                <li class="navli"><a href="#user-profile-page">
-                    <img style="width: 2em;" src="img/icon_user.svg" alt=""></a></li>
-                <li class="navli navactive"><a href="#recent-page">
-                    <img style="width: 2em;" src="img/map.svg" alt=""></a></li>
-                <li class="navli"><a href="#pin-page"><img style="width: 2em;" src="img/icon_note.svg" alt=""></a></li>
+                <li class="navli">
+                    <a href="#user-profile-page">
+                        <span class="nav_icon"><img style="width: 2em;" src="img/icon_user.svg" alt=""></span>
+                        <span>Profile</span>
+                    </a>
+                    
+                </li>
+                <li class="navli navactive">
+                    <a href="#recent-page">
+                        <span class="nav_icon"><img style="width: 2em;" src="img/map.svg" alt=""></span>
+                        <span>Map</span>
+                    </a>
+                </li>
+                <li class="navli"><a href="#pin-page">
+                        <span class="nav_icon"><img style="width: 2em;" src="img/icon_note.svg" alt=""></span>
+                        <span>Pins</span>
+                    </a>
+                </li>
                 
             </ul>
         </footer>
@@ -337,11 +351,24 @@
         </div>
         <footer data-role="footer" class="nav">
             <ul>
-                <li class="navli"><a href="#user-profile-page">
-                    <img style="width: 2em;" src="img/icon_user.svg" alt=""></a></li>
-                <li class="navli"><a href="#recent-page">
-                    <img style="width: 2em;" src="img/map.svg" alt=""></a></li>
-                <li class="navli navactive"><a href="#pin-page"><img style="width: 2em;" src="img/icon_note.svg" alt=""></a></li>
+                <li class="navli">
+                    <a href="#user-profile-page">
+                        <span class="nav_icon"><img style="width: 2em;" src="img/icon_user.svg" alt=""></span>
+                        <span>Profile</span>
+                    </a>
+                    
+                </li>
+                <li class="navli">
+                    <a href="#recent-page">
+                        <span class="nav_icon"><img style="width: 2em;" src="img/map.svg" alt=""></span>
+                        <span>Map</span>
+                    </a>
+                </li>
+                <li class="navli navactive"><a href="#pin-page">
+                        <span class="nav_icon"><img style="width: 2em;" src="img/icon_note.svg" alt=""></span>
+                        <span>Pins</span>
+                    </a>
+                </li>
                 
             </ul>
         </footer>
@@ -359,22 +386,7 @@
 
             </div>
 
-<!-- 
-            <div class="ugh">
-                <div class="card">
-                    <h1>20</h1>
-                    <p>Pins</p>
-                </div>
-                <div class="card">
-                    <h1>20</h1>
-                    <p>Photos</p>
-                </div>
-                <div class="card">
-                    <h1>20</h1>
-                    <p>Views</p>
-                </div>
-            </div>
- -->
+            <div class="user-house"></div>
 
 
         <!-- ACCOUNT INFO -->
@@ -405,11 +417,24 @@
         </div>
         <footer data-role="footer" class="nav">
             <ul>
-                <li class="navli navactive"><a href="#user-profile-page">
-                    <img style="width: 2em;" src="img/icon_user.svg" alt=""></a></li>
-                <li class="navli"><a href="#recent-page">
-                    <img style="width: 2em;" src="img/map.svg" alt=""></a></li>
-                <li class="navli"><a href="#pin-page"><img style="width: 2em;" src="img/icon_note.svg" alt=""></a></li>
+                <li class="navli navactive">
+                    <a href="#user-profile-page">
+                        <span class="nav_icon"><img style="width: 2em;" src="img/icon_user.svg" alt=""></span>
+                        <span>Profile</span>
+                    </a>
+                    
+                </li>
+                <li class="navli">
+                    <a href="#recent-page">
+                        <span class="nav_icon"><img style="width: 2em;" src="img/map.svg" alt=""></span>
+                        <span>Map</span>
+                    </a>
+                </li>
+                <li class="navli"><a href="#pin-page">
+                        <span class="nav_icon"><img style="width: 2em;" src="img/icon_note.svg" alt=""></span>
+                        <span>Pins</span>
+                    </a>
+                </li>
                 
             </ul>
         </footer>
@@ -422,26 +447,23 @@
         <header data-role="header">
             <h1></h1>
             <ul>
-                <li><a href="#pin-page"><img style="width: 2em;" src="img/icon_arrowback.svg" alt=""></a></li>
+                <li><a href="#" data-rel="back"><img style="width: 2em;" src="img/icon_arrowback.svg" alt=""></a></li>
                 <li class="flex-stretch"></li>
                 <li><a href="#edit-page"><img style="width: 25px;" src="img/edit.svg" alt=""></a></li>
             </ul>
         </header>
 
-        <div data-role="main">
+        <div data-role="main" class="main">
             <div class="house-profile"></div>
+
+            <div class="profile_map">
+                
+            </div>
         </div>
-        
-   
-
-        <!-- <div data-role="main" class="main center">
-            <div class="house-profile"></div>
-            
-
-
-            
-        </div> -->
     </section>
+
+
+
 
 
     <!-- Edit House -->

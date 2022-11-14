@@ -1,7 +1,6 @@
 import { query } from "./function.js"
 import { makeMap, makeMarkers } from "./maps.js"
-import { makeHouseList, makeUserProfilePage, makeHouseProfile, makeHouseProfileEdit } from "./parts.js"; 
-
+import { makeHouseList, makeUserProfilePage, makeHouseProfile, makeHouseProfileEdit, makeUserHouse  } from "./parts.js"; 
 
 
 export const RecentPage = async() => {
@@ -21,6 +20,17 @@ export const RecentPage = async() => {
 
     let map_el = await makeMap("#recent-page .map");
     makeMarkers(map_el, house_locations);
+
+
+
+    // let {result:houseinfo} = await query({
+    //     type:"animal_by_id",
+    //     params:[sessionStorage.House_Id]
+    // });
+
+    // console.log(houseinfo)
+
+    // $("#recent-page .card_small").html(makeHouseCard(houseinfo));
 
     
 
@@ -55,7 +65,21 @@ export const UserPage = async() => {
             $(".panel").slideToggle("slow");
             $(".xs1").toggle();
             $(".xs2").toggle();
-          });});      
+          });});
+          
+       
+          
+
+    let {result:user_house} = await query({
+    type:"animals_by_user_id",
+    params:[sessionStorage.userId]
+    });
+
+    console.log(sessionStorage.userId)
+
+
+    $("#user-profile-page .user-house").html(makeUserHouse(user_house))
+
 }
 
 
@@ -67,9 +91,21 @@ export const HousePage = async() => {
 
     console.log(house)
 
+    
+
     $("#house-profile-page .house-profile").html(makeHouseProfile(house));
 
+    let {result:locations} = await query({
+        type:"locations_by_animal_id",
+        params:[sessionStorage.House_Id]
+    });
+    console.log(locations)
+
+    let map_el = await makeMap("#house-profile-page .profile_map");
+    makeMarkers(map_el,locations);
+
 }
+
 
 
 export const HouseEditPage = async() => {

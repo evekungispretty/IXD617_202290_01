@@ -63,7 +63,7 @@ function makeStatement($data) {
         case "animals_by_user_id":
             return makeQuery($conn, "SELECT * FROM `track_house_item` WHERE `user_id`=?", $params);        
         case "locations_by_animal_id":
-            return makeQuery($conn, "SELECT * FROM `track_locations` WHERE `animal_id`=?", $params);
+            return makeQuery($conn, "SELECT * FROM `track_locations` WHERE `house_id`=?", $params);
 
 
         
