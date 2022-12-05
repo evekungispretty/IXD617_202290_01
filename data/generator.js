@@ -34,15 +34,18 @@ const getAnimals = () => (new Array(50)).fill(0).map((o,i)=>{
     o.type = chance.pickone(['Queen Anne','Gothic Revival','Tudor Revival', 'Mission Revival','Rousseau Homes']);
     o.floor = animaltype(o.type);
     o.description = chance.sentence();
-    o.img = `https://via.placeholder.com/${num()}x${num()}/${hex()}/fff/?text=${o.name}`;
+    o.img = `https://via.placeholder.com/${num()}x${num()}/${hex()}/fff/?text=${o.type}`;
     o.date_create = getdate(Date.parse('2020/01/01'),Date.now());
+    o.lat = chance.latitude({min:37.67, max:37.80});
+    o.lng = chance.longitude({min:-122.50, max:-122.37});
     return o;
 });
 
 const getLocations = () => (new Array(250)).fill(0).map((o,i)=>{
     o = {};
     o.id = i + 1;
-    o.house_id = chance.natural({min:1, max:50});
+    // o.house_id = chance.natural({min:1, max:50});
+    o.house_id = i + 1;
     o.lat = chance.latitude({min:37.67, max:37.80});
     o.lng = chance.longitude({min:-122.50, max:-122.37});
     o.description = chance.sentence();

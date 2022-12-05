@@ -39,6 +39,22 @@ function makeQuery($conn,$prep,$params,$makeResults=true) {
     }
 }
 
+
+
+function makeUpload($file, $folder) {
+    $filename = microtime(true) . "_" . $_FILES[$file]['name'];
+
+    if (@move_uploaded_file(
+        $_FILES[$file]['tmp_name'],
+        $folder.$filename
+    )) return ["result"=>$filename];
+    else return [
+        "error"=>"File Upload Failed",
+        "filename"=>$filename
+    ];
+}
+
+
 function makeStatement($data) {
     $conn = makeConn();
     $type = @$data->type;
@@ -58,12 +74,12 @@ function makeStatement($data) {
             return makeQuery($conn, "SELECT * FROM `track_house_item` WHERE `id`=?", $params);
         case "location_by_id":
             return makeQuery($conn, "SELECT * FROM `track_locations` WHERE `id`=?", $params);
-
-        
         case "animals_by_user_id":
             return makeQuery($conn, "SELECT * FROM `track_house_item` WHERE `user_id`=?", $params);        
         case "locations_by_animal_id":
             return makeQuery($conn, "SELECT * FROM `track_locations` WHERE `house_id`=?", $params);
+
+        
 
 
         
@@ -87,6 +103,8 @@ function makeStatement($data) {
             ", $params);
 
 
+
+
         // case "recent_animal_locations":
         //     return makeQuery($conn, "SELECT * 
         //     FROM `track_house_item` a
@@ -99,10 +117,223 @@ function makeStatement($data) {
         case "check_signin":
             return makeQuery($conn, "SELECT `id` FROM `track_house` WHERE `username`=? AND `password` = md5(?)", $params);
 
+        case "check_user":
+            $result = makeQuery($conn, "SELECT `id` FROM `track_house`
+            WHERE `username`=? OR `email`=?
+            ", [$params[0],$params[1]]);
+            if (count($result['result']) > 0)
+                return ["error"=>"Username or Email already exists"];
+
+        /* INSERT */
+
+        case "insert_user":
+            $result = makeQuery($conn, "SELECT `id`
+            FROM `track_house`
+            WHERE `username`=? OR `email`=?
+            ", [$params[0],$params[1]]);
+            if (count($result['result']) > 0)
+                return ["error"=>"Username or Email already exists"];
+
+            $result = makeQuery($conn, "INSERT INTO
+            `track_house`
+            (
+                `username`,
+                `email`,
+                `password`,
+                `img`,
+                `date_create`
+            )
+            VALUES
+            (
+                ?,
+                ?,
+                md5(?),
+                'https://via.placeholder.com/400/?text=USER',
+                NOW()
+            )
+            ", $params, false);
+
+            if (isset($result['error'])) return $result;
+            return ["id" => $conn->lastInsertId()];
+
+        case "insert_animal":
+            $result = makeQuery($conn, "INSERT INTO
+            `track_house_item`
+            (
+                `user_id`,
+                `name`,
+                `type`,
+                `floor`,
+                `description`,
+                `img`,
+                `date_create`,
+                `lat`,
+                `lng`
+            )
+            VALUES
+            (
+                ?,
+                ?,
+                ?,
+                ?,
+                ?,
+                'https://via.placeholder.com/400/?text=ANIMAL',
+                NOW(),
+                ?,
+                ?
+            )
+            ", $params, false);
+
+            if (isset($result['error'])) return $result;
+            return ["result"=>"Success"];
+
+        case "insert_location":
+            $result = makeQuery($conn, "INSERT INTO
+            `track_house_item`
+            (
+                `lat`,
+                `lng`
+            )
+            VALUES
+            (
+                ?,
+                ?
+            )
+            ", $params, false);
+
+            if (isset($result['error'])) return $result;
+            return ["result"=>"Success"];
+
+    
+
+        // case "insert_location":
+        //     $result = makeQuery($conn, "INSERT INTO
+        //     `track_locations`
+        //     (
+        //         `house_id`,
+        //         `lat`,
+        //         `lng`,
+        //         `icon`,
+        //         `date_create`
+        //     )
+        //     VALUES
+        //     (
+        //         ?,
+        //         ?,
+        //         ?,
+        //         'https://via.placeholder.com/400/?text=ICON',
+        //         NOW()
+        //     )
+        //     ", $params, false);
+
+        //     if (isset($result['error'])) return $result;
+        //     return ["result"=>"Success"];
+
+
+
+
+
+
+        /* UPDATE */
+
+        case "update_user":
+            $result = makeQuery($conn, "UPDATE
+            `track_house`
+            SET
+                `name` = ?,
+                `username` = ?,
+                `email` = ?
+            WHERE `id` = ?
+            ", $params, false);
+
+            if (isset($result['error'])) return $result;
+            return ["result"=>"Success"];
+            
+        case "update_password":
+            $result = makeQuery($conn, "UPDATE
+            `track_house`
+            SET
+                `password` = md5(?)
+            WHERE `id` = ?
+            ", $params, false);
+
+            if (isset($result['error'])) return $result;
+            return ["result"=>"Success"];
+
+        case "update_animal":
+            $result = makeQuery($conn, "UPDATE
+            `track_house_item`
+            SET
+                `name` = ?,
+                `type` = ?,
+                `floor` = ?,
+                `description` = ?
+            WHERE `id` = ?
+            ", $params, false);
+
+            if (isset($result['error'])) return $result;
+            return ["result"=>"Success"];
+
+
+        
+        /* UPLOAD */
+        case "update_user_photo":
+            $result = makeQuery($conn, "UPDATE
+            `track_house`
+            SET `img` = ?
+            WHERE `id` = ?
+            ", $params, false);
+
+            if (isset($result['error'])) return $result;
+            return ["result"=>"Success"];
+
+
+
+            
+        /* DELETE */
+
+
+        case "delete_animal":
+            $result = makeQuery($conn, "DELETE FROM
+            `track_house_item`
+            WHERE `id` = ?
+            ", $params, false);
+
+            if (isset($result['error'])) return $result;
+            return ["result"=>"Success"];
+
+        case "delete_location":
+            $result = makeQuery($conn, "DELETE FROM
+            `track_locations`
+            WHERE `id` = ?
+            ", $params, false);
+
+            if (isset($result['error'])) return $result;
+            return ["result"=>"Success"];
+
+
+        case "delete_location":
+            $result = makeQuery($conn, "DELETE FROM
+            `track_locations`
+            WHERE `house_id` = ?
+            ", $params, false);
+
+            if (isset($result['error'])) return $result;
+            return ["result"=>"Success"];
+
+
+        case "check_signin":
+            return makeQuery($conn, "SELECT `id` FROM `track_house` WHERE `username`=? AND `password` = md5(?)", $params);
+
 
         default:
             return ["error"=>"No Matched Type"];
     }
+}
+
+if (!empty($_FILES)) {
+    $result = makeUpload("image","../upload/");
+    die(json_encode($result));
 }
 
 $data = json_decode(file_get_Contents("php://input"));

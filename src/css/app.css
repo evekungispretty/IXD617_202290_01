@@ -4,7 +4,7 @@
 
 :root {
     --font-header: Raleway;
-    --font-body: Oxygen;
+    --font-body: Lato;
 
     --header-height: 3rem;
     --body-height: 1.8em;
@@ -50,6 +50,7 @@ h3 {
     font-size: 0.8em;
     color: var(--color-main-neutral);
     font-family: var(--font-header);
+    font-weight: 400;
 
 }
 
@@ -101,6 +102,16 @@ p {
     margin-bottom: 1em;
 }
 
+.nav-form {
+    justify-content: center;
+    margin: 1em 0;
+    display: flex;
+}
+
+.nav-form-container {
+    padding: 20% 0;
+}
+
 /* Sign in page */
 .logo {
     justify-content: center;
@@ -109,6 +120,10 @@ p {
 }
 
 .warning {
+    display: none;
+}
+
+.warning_password {
     display: none;
 }
 /* GENERAL */
@@ -213,6 +228,14 @@ svg {
 
 /* Onboarding */
 
+.skip {
+    display: flex;
+    justify-content: center;
+    margin-top: 10%;
+}
+
+
+
 .next {
     justify-content: center;
     margin: 1em 0;
@@ -316,6 +339,11 @@ svg {
     
 }
 
+#signup-form-step1 {
+    padding: 1em;
+    
+}
+
 /* App Structure */
 
 .ui-loader {
@@ -393,6 +421,10 @@ svg {
     line-height: 0.1em;
 }
 
+.icon_pin {
+    margin-right: 3%;
+}
+
 /* .navactive {
     border-top:2px solid var(--color-main-medium);
 } */
@@ -407,6 +439,32 @@ svg {
 
 }
 
+
+.skip-button {
+    background-color: #FFFFFF;
+    border-bottom: 1px solid var(--color-main-neutral);
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    box-sizing: border-box;
+    color: var(--color-main-neutral);
+    cursor: pointer;
+    display: inline-block;
+    font-size: 0.7em;
+    font-weight: 400;
+    line-height: 20px;
+    margin: 0;
+    outline: none;
+    padding: 2% 50%;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
+    width: auto;
+}
+
 .form-button {
     border-radius: 8px;
     font-family: var(--font-body);
@@ -419,7 +477,6 @@ svg {
     justify-content: center;
     margin: 1em 0;
     display: flex;
-    margin-top: 3em;
 }
 
 /* Core Navigation */
@@ -447,7 +504,11 @@ svg {
     filter: invert(47%) sepia(68%) saturate(1180%) hue-rotate(320deg) brightness(109%) contrast(100%);
   } */
 
-
+.nav-form {
+    position: relative;
+    bottom: 0;
+    overflow: hidden;
+}
 
 
 .locate {
@@ -485,7 +546,7 @@ svg {
 .houselist {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-gap: 3%;
+    grid-gap: 1%;
     row-gap: 1%;
 
 }
@@ -498,9 +559,8 @@ svg {
     font-size: 1.1em;
     color: var(--color-main-dark);
     box-shadow: var(--box-shadow);
-    margin: 5% 0 5% 0;
+    margin: 1% 0 1% 0;
     background-color: white;
-    border-radius: 10px;
 }
 
 .content-container {
@@ -509,7 +569,7 @@ svg {
     column-gap: 1%;
     grid-template-rows: 1fr min-content;
     background-color: rgba(255, 255, 255, 0.57);
-    border-radius: 10px;
+
 }
 
 .content_img img{
@@ -518,7 +578,6 @@ svg {
     object-fit: cover;
     object-position: center;
     vertical-align: text-bottom;
-    border-radius: 10px 10px 0 0;
 }
 
 .content_title {
@@ -599,12 +658,29 @@ svg {
     margin-bottom: 15%;
 }
 
+.close {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 4%;
+}
+
+.close img {
+    width:35px;
+}
+
+.big-card-container {
+    padding-top: 2%;
+    display: flex;
+    justify-content: end;
+    flex-direction: column;
+}
+
 /* User Profile */
 
 .profile img {
     border-radius: 50%;
-    width: 70px;
-    height: 70px;
+    width: 100px;
+    height: 100px;
     object-fit: cover;
 }
 
@@ -618,8 +694,31 @@ svg {
 
 .profile h3 {
     font-size: 1em;
+    color: var(--color-main-dark);
 
 }
+
+.profile_container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 5% 7%;
+    background-color: white;
+    margin: 5% 0;
+    border-radius: 5px;
+
+}
+
+.profile_container img {
+    width: 40px;
+
+}
+
+.profile_container h2 {
+    margin-left: 5%;
+}
+
+
 
 #form-logout {
     padding: 1em;
@@ -649,17 +748,28 @@ svg {
 }
 
 
-.user-house {
+.user-image {
+    width: 100vw;
+    height: 50vh;
+    display: flex;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+/* .user-house {
     display: grid;
     grid-gap: 2%;
     grid-template-columns: 1fr 1fr 1fr;
+    margin-top: 18% 5% 0 5%;
 }
 
 .user-house img {
     width: 100%;
     height: 100px;
     
-}
+} */
 
 /* Map page */
 
@@ -698,6 +808,10 @@ svg {
     user-select: none; */
 }
 
+.hide {
+    display: none;
+}
+
 .popup {
     visibility: hidden;
     width: 160px;
@@ -717,6 +831,13 @@ svg {
     -webkit-animation: fadeIn 1s;
     animation: fadeIn 1s;
   }
+
+.delete_confirm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+}
 
 @-webkit-keyframes fadeIn {
 from {opacity: 0;} 
@@ -750,13 +871,32 @@ to {opacity:1 ;}
 }
 
 
+.card_title h3 {
+    font-weight: 400;
+}
+.card_date {
+    position: relative;
+    right: -88%;
+    top: 30%;
+    font-weight: 300;
+    color: var(--color-neutral-light);
+}
+
 /* Button */
 input [type="submit"]{
     color: var(--color-main-dark);
     appearance: none;
 
+}
 
+input[type="text"]:focus,
+input[type="password"]:focus {
+    outline: 3px solid #FE6975 !important;
+    
+  }
 
+input:-webkit-autofill:focus {
+    outline: none !important;
 }
 
 .button-6 {
@@ -809,6 +949,38 @@ input [type="submit"]{
   color: rgba(0, 0, 0, 0.65);
   transform: translateY(0);
 }
+
+.button-cancel {
+    color: var(--color-main-dark);
+    text-align: center;
+    align-items: center;
+    background-color: #f8f8f8;
+    border: none;
+    border-radius: 6px;
+    box-shadow: rgb(0 0 0 / 2%) 0 1px 3px 0;
+    box-sizing: border-box;
+    cursor: pointer;
+    display: inline-flex;
+    font-family: var(--font-body);
+    font-size: 1.1em;
+    font-weight: 600;
+    justify-content: center;
+    line-height: 1.25;
+    margin: 0;
+
+    padding: calc(1.25rem - 0px) calc(1.5rem - -21px);
+    position: relative;
+    text-decoration: none;
+    transition: all 250ms;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: baseline;
+    width: 92vw;
+    appearance: value;
+
+}
+
 
 
 .button_small {

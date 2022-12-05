@@ -1,4 +1,7 @@
 $('.alert').html('Saved!').addClass('alert-info').show().delay(1500).fadeOut();
+$('.alert').html('Password Changed!').addClass('alert-info').show().delay(1500).fadeOut();
+$('.alert').html('Deleted!').addClass('alert-info').show().delay(1500).fadeOut();
+
 
 var prompt = function (message, style, time)
 {

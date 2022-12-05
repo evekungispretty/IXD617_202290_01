@@ -1,0 +1,53 @@
+[02-Dec-2022 02:15:03 UTC] PHP Notice:  Undefined variable: db in /home/jv00nvga6sq4/public_html/aau/ixd617/data/validation.php on line 7
+[02-Dec-2022 02:15:03 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function makeQuery() in /home/jv00nvga6sq4/public_html/aau/ixd617/data/validation.php:13
+Stack trace:
+#0 {main}
+  thrown in /home/jv00nvga6sq4/public_html/aau/ixd617/data/validation.php on line 13
+[02-Dec-2022 02:16:13 UTC] PHP Notice:  Undefined variable: db in /home/jv00nvga6sq4/public_html/aau/ixd617/data/validation.php on line 7
+[02-Dec-2022 02:16:13 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function makeQuery() in /home/jv00nvga6sq4/public_html/aau/ixd617/data/validation.php:13
+Stack trace:
+#0 {main}
+  thrown in /home/jv00nvga6sq4/public_html/aau/ixd617/data/validation.php on line 13
+[02-Dec-2022 02:17:17 UTC] PHP Notice:  Undefined variable: db in /home/jv00nvga6sq4/public_html/aau/ixd617/data/validation.php on line 7
+[02-Dec-2022 02:17:17 UTC] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, bool given in /home/jv00nvga6sq4/public_html/aau/ixd617/data/validation.php on line 14
+[02-Dec-2022 02:17:58 UTC] PHP Notice:  Undefined variable: db in /home/jv00nvga6sq4/public_html/aau/ixd617/data/validation.php on line 7
+[02-Dec-2022 02:17:59 UTC] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, bool given in /home/jv00nvga6sq4/public_html/aau/ixd617/data/validation.php on line 14
+[02-Dec-2022 02:18:05 UTC] PHP Notice:  Undefined variable: db in /home/jv00nvga6sq4/public_html/aau/ixd617/data/validation.php on line 7
+[02-Dec-2022 02:18:05 UTC] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, bool given in /home/jv00nvga6sq4/public_html/aau/ixd617/data/validation.php on line 14
+[02-Dec-2022 02:38:49 UTC] PHP Notice:  Undefined variable: host in /home/jv00nvga6sq4/public_html/aau/ixd617/data/validation.php on line 3
+[02-Dec-2022 02:38:49 UTC] PHP Notice:  Undefined variable: user in /home/jv00nvga6sq4/public_html/aau/ixd617/data/validation.php on line 3
+[02-Dec-2022 02:38:49 UTC] PHP Notice:  Undefined variable: pass in /home/jv00nvga6sq4/public_html/aau/ixd617/data/validation.php on line 3
+[02-Dec-2022 02:38:49 UTC] PHP Notice:  Undefined variable: db in /home/jv00nvga6sq4/public_html/aau/ixd617/data/validation.php on line 3
+[02-Dec-2022 02:38:49 UTC] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'jv00nvga6sq4'@'localhost' (using password: NO) in /home/jv00nvga6sq4/public_html/aau/ixd617/data/validation.php on line 3
+[02-Dec-2022 02:38:49 UTC] PHP Warning:  mysqli_error() expects parameter 1 to be mysqli, bool given in /home/jv00nvga6sq4/public_html/aau/ixd617/data/validation.php on line 3
+[02-Dec-2022 02:38:53 UTC] PHP Notice:  Undefined variable: host in /home/jv00nvga6sq4/public_html/aau/ixd617/data/validation.php on line 3
+[02-Dec-2022 02:38:53 UTC] PHP Notice:  Undefined variable: user in /home/jv00nvga6sq4/public_html/aau/ixd617/data/validation.php on line 3
+[02-Dec-2022 02:38:53 UTC] PHP Notice:  Undefined variable: pass in /home/jv00nvga6sq4/public_html/aau/ixd617/data/validation.php on line 3
+[02-Dec-2022 02:38:53 UTC] PHP Notice:  Undefined variable: db in /home/jv00nvga6sq4/public_html/aau/ixd617/data/validation.php on line 3
+[02-Dec-2022 02:38:53 UTC] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'jv00nvga6sq4'@'localhost' (using password: NO) in /home/jv00nvga6sq4/public_html/aau/ixd617/data/validation.php on line 3
+[02-Dec-2022 02:38:53 UTC] PHP Warning:  mysqli_error() expects parameter 1 to be mysqli, bool given in /home/jv00nvga6sq4/public_html/aau/ixd617/data/validation.php on line 3
+[02-Dec-2022 02:38:58 UTC] PHP Notice:  Undefined variable: host in /home/jv00nvga6sq4/public_html/aau/ixd617/data/validation.php on line 3
+[02-Dec-2022 02:38:58 UTC] PHP Notice:  Undefined variable: user in /home/jv00nvga6sq4/public_html/aau/ixd617/data/validation.php on line 3
+[02-Dec-2022 02:38:58 UTC] PHP Notice:  Undefined variable: pass in /home/jv00nvga6sq4/public_html/aau/ixd617/data/validation.php on line 3
+[02-Dec-2022 02:38:58 UTC] PHP Notice:  Undefined variable: db in /home/jv00nvga6sq4/public_html/aau/ixd617/data/validation.php on line 3
+[02-Dec-2022 02:38:58 UTC] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'jv00nvga6sq4'@'localhost' (using password: NO) in /home/jv00nvga6sq4/public_html/aau/ixd617/data/validation.php on line 3
+[02-Dec-2022 02:38:58 UTC] PHP Warning:  mysqli_error() expects parameter 1 to be mysqli, bool given in /home/jv00nvga6sq4/public_html/aau/ixd617/data/validation.php on line 3
+[02-Dec-2022 02:39:38 UTC] PHP Notice:  Undefined variable: host in /home/jv00nvga6sq4/public_html/aau/ixd617/data/validation.php on line 3
+[02-Dec-2022 02:39:38 UTC] PHP Notice:  Undefined variable: user in /home/jv00nvga6sq4/public_html/aau/ixd617/data/validation.php on line 3
+[02-Dec-2022 02:39:38 UTC] PHP Notice:  Undefined variable: pass in /home/jv00nvga6sq4/public_html/aau/ixd617/data/validation.php on line 3
+[02-Dec-2022 02:39:38 UTC] PHP Notice:  Undefined variable: db in /home/jv00nvga6sq4/public_html/aau/ixd617/data/validation.php on line 3
+[02-Dec-2022 02:39:38 UTC] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'jv00nvga6sq4'@'localhost' (using password: NO) in /home/jv00nvga6sq4/public_html/aau/ixd617/data/validation.php on line 3
+[02-Dec-2022 02:39:38 UTC] PHP Warning:  mysqli_error() expects parameter 1 to be mysqli, bool given in /home/jv00nvga6sq4/public_html/aau/ixd617/data/validation.php on line 3
+[02-Dec-2022 02:39:56 UTC] PHP Notice:  Undefined variable: host in /home/jv00nvga6sq4/public_html/aau/ixd617/data/validation.php on line 3
+[02-Dec-2022 02:39:56 UTC] PHP Notice:  Undefined variable: user in /home/jv00nvga6sq4/public_html/aau/ixd617/data/validation.php on line 3
+[02-Dec-2022 02:39:56 UTC] PHP Notice:  Undefined variable: pass in /home/jv00nvga6sq4/public_html/aau/ixd617/data/validation.php on line 3
+[02-Dec-2022 02:39:56 UTC] PHP Notice:  Undefined variable: db in /home/jv00nvga6sq4/public_html/aau/ixd617/data/validation.php on line 3
+[02-Dec-2022 02:39:56 UTC] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'jv00nvga6sq4'@'localhost' (using password: NO) in /home/jv00nvga6sq4/public_html/aau/ixd617/data/validation.php on line 3
+[02-Dec-2022 02:39:56 UTC] PHP Warning:  mysqli_error() expects parameter 1 to be mysqli, bool given in /home/jv00nvga6sq4/public_html/aau/ixd617/data/validation.php on line 3
+[02-Dec-2022 04:15:03 UTC] PHP Parse error:  syntax error, unexpected 'unsuccessful”' (T_STRING), expecting ')' in /home/jv00nvga6sq4/public_html/aau/ixd617/data/validation.php on line 9
+[02-Dec-2022 04:45:29 UTC] PHP Parse error:  syntax error, unexpected 'unsuccessful”' (T_STRING), expecting ')' in /home/jv00nvga6sq4/public_html/aau/ixd617/data/validation.php on line 9
+[02-Dec-2022 04:46:19 UTC] PHP Parse error:  syntax error, unexpected 'unsuccessful”' (T_STRING), expecting ')' in /home/jv00nvga6sq4/public_html/aau/ixd617/data/validation.php on line 9
+[02-Dec-2022 04:48:06 UTC] PHP Parse error:  syntax error, unexpected 'unsuccessful”' (T_STRING), expecting ')' in /home/jv00nvga6sq4/public_html/aau/ixd617/data/validation.php on line 9
+[02-Dec-2022 04:48:41 UTC] PHP Parse error:  syntax error, unexpected 'unsuccessful”' (T_STRING), expecting ')' in /home/jv00nvga6sq4/public_html/aau/ixd617/data/validation.php on line 9
+[03-Dec-2022 19:45:21 UTC] PHP Parse error:  syntax error, unexpected 'unsuccessful”' (T_STRING), expecting ')' in /home/jv00nvga6sq4/public_html/aau/ixd617/data/validation.php on line 9
+[03-Dec-2022 19:45:48 UTC] PHP Parse error:  syntax error, unexpected 'unsuccessful”' (T_STRING), expecting ')' in /home/jv00nvga6sq4/public_html/aau/ixd617/data/validation.php on line 9

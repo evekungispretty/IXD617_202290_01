@@ -2,19 +2,30 @@ import { templater } from "./function.js";
 
 
 export const makeHouseCard = templater(({id,name,type,date_create,img})=>`
-<a href="#house-profile-page" style="width: 90vw;" data-house-card="${id}">
-    <div id="housecard" class="card-container">
-            <div class="card_img"><img style=" width: 100px; height: 100px; object-fit: cover;" src="${img}"></div>
-            <div class="card_title">
-                <h2>${name}</h2>
-                <h3>${type}</h3>
-                <div class="card_date">
-                    <h3>${date_create}</h3>
+<div class="big-card-container">
+    <div class="close"><img src="./img/close.svg" alt=""></div>
+    <a href="#house-profile-page" style="width: 90vw;" data-house-card="${id}">
+        <div id="housecard" class="card-container">
+                <div class="card_img"><img style=" width: 100px; height: 100px; object-fit: cover;" src="${img}"></div>
+                <div class="card_title">
+                    <h2>${name}</h2>
+                    <h3>${type}</h3>
+                    <div class="card_date">
+                        <h3>${date_create}</h3>
+                    </div>
                 </div>
-            </div>
-    </div>
-</a>
+        </div>
+    </a>
+</div>
 `)
+
+
+export const makeEmptyHouseCard = () => {`
+    <div>
+        <h1>You don't have any houses yet.</h1>
+        <div class="button-6"><a href="#house-add-page">Start Here</a></div>
+    </div>
+`}
 
 
 export const makeHouseList = templater(({id,name,type,date_create,img})=>`
@@ -24,9 +35,6 @@ export const makeHouseList = templater(({id,name,type,date_create,img})=>`
             <div class="content_title">
                 <h2>${name}</h2>
                 <h3>${type}</h3>
-                <div class="content_date">
-                    <h3>${date_create}</h3>
-                </div>
             </div>
     </div>
 </a>
@@ -35,24 +43,19 @@ export const makeHouseList = templater(({id,name,type,date_create,img})=>`
 export const makeUserProfilePage = ({id,name,email,username,img})=>`
 <div>
     <div class="profile">
-        <img src="${img}" alt="">
+        <a href="#user-edit-photo-page">
+            <img src="${img}" alt="">
+        </a>
         <h3>${name}</h3>
     </div>
-    
-    <div class="flip"><span class="1" style="line-height: 45px;"> 
-        <h2>Account Information <span style="font-size: 0.5em;">&#9660;</span></h2></span>
-    </div>
-    
-    <div class="panel">
-       
-        <form class="form" id="form-logout" data-ajax="false">
-            <div class="warning"></div>
+
+    <form class="form" id="form-logout" data-ajax="false">
             <div class="form-control">
                 <div class="user-profile-name">${name}</div>
                 <div class="user-profile-username">@${username}</div>
                 <div class="user-profile-email">${email}</div>
             </div>
-    <a href="#" class="js-logout">Log out</a>
+
 </div>
 `
 
@@ -62,6 +65,27 @@ export const makeUserHouse = templater(({id, img})=>`
 </a>
 
 `)
+
+
+
+
+export const makeEditUser = ({name,username,email}) => {
+    
+    return `
+    <div class="form-control">
+        <label class="form-label" for="user-edit-username">Username</label>
+        <input class="form-input" type="text" id="user-edit-username" data-role="none" placeholder="Type your Username" value="${username}">
+    </div>
+    <div class="form-control">
+        <label class="form-label" for="user-edit-name">Name</label>
+        <input class="form-input" type="text" id="user-edit-name" data-role="none" placeholder="Type your Name" value="${name}">
+    </div>
+    <div class="form-control">
+        <label class="form-label" for="user-edit-email">Email</label>
+        <input class="form-input" type="text" id="user-edit-email" data-role="none" placeholder="Type your Email" value="${email}">
+    </div>`
+}
+
 
     
 export  const makeHouseProfile = templater(({id,type,floor,img,date_create,description})=>{
@@ -92,7 +116,7 @@ export  const makeHouseProfile = templater(({id,type,floor,img,date_create,descr
     <div class="container-description">
         <div>
             <h2>Description</h2>
-            ${description}
+            <p>${description}</p>
         </div>
     </div>
         
@@ -102,41 +126,40 @@ export  const makeHouseProfile = templater(({id,type,floor,img,date_create,descr
     })
 
 
-export  const makeHouseProfileEdit = templater(({id,type,floor,img,description})=>{
+
+export  const makeHouseProfileEdit = templater(({id,name,type,floor,img,description})=>{
     return `
     <div class="edit_img">
-        <div class="one">
-            <img style="width:80vw;" src="${img}" alt="">
+        <div class="edit_name">
+            <label class="form-label" for="house-edit-name">Name</label>
+            <input class="form-input" type="text" id="house-edit-name" data-role="none" value="${name}">     
         </div>
-        
         <div class="two">
-            <label class="form-label" for="pin-image">Replace Image</label>
-            <input type="file" id="input-image" data-role="none">
+            <label class="form-label" for="house-edit-image">Replace Image</label>
+            <input type="file" id="house-edit-image" data-role="none">     
         </div>
     </div>
 
     <div class="edit_type">
-        <label class="form-label" for="pin-description">Type</label>
-        <input type="text" id="input-type" data-role="none" value="${type}">
+        <label class="form-label" for="house-edit-type">Type</label>
+        <input class="form-input" type="text" id="house-edit-type" data-role="none" value="${type}">
     </div>
 
     <div class="edit_floor">
-        <label class="form-label" for="pin-description">Floor</label>
+        <label class="form-label" for="house-edit-floor">Floor</label>
         <form>
-        <select id = "houseFloor" onchange = "floor()" >
-        <option> 1 </option>
-        <option> 2 </option>
-        <option> 3 </option>
-        <option> 4 </option>
-        <option> 5 or more </option>
-        </select>
-        <input type="text" id="input-type" data-role="none" value="${floor}">
+
+        <input class="form-input" type="text" id="house-edit-floor" data-role="none" value="${floor}">
     </div>
 
     <div class="edit_text">
-        <label class="form-label" for="pin-description">Description</label>
+        <label class="form-label" for="house-edit-description">Description</label>
+        <textarea type="textarea" class="form-input" id="hosue-edit-description" data-role="none">${description}</textarea>
+    </div>
 
-        <textarea>${description}</textarea>
+    <div class="delete">
+        <a href="#delete-confirm-page" class="delete-btn"><img src="./img/icon_delete.svg"></a>
+    
     </div>
 
     `
@@ -144,3 +167,40 @@ export  const makeHouseProfileEdit = templater(({id,type,floor,img,description})
 
 
     
+
+
+// export  const makeHouseProfileEdit = templater(({id,type,floor,img,description})=>{
+//     return `
+//     <div class="edit_img">
+//         <div class="one">
+        
+//             <img style="width:80vw;" src="${img}" alt="">
+//         </div>
+        
+//         <div class="two">
+//             <label class="form-label" for="house-edit-image">Replace Image</label>
+//             <input type="file" id="house-edit-image" data-role="none">
+//         </div>
+//     </div>
+
+
+//     <div class="edit_type">
+//         <label class="form-label" for="house-edit-type">Type</label>
+//         <input class="form-input" type="text" id="house-edit-type" data-role="none" value="${type}">
+//     </div>
+
+//     <div class="edit_floor">
+//         <label class="form-label" for="house-edit-floor">Floor</label>
+//         <form>
+
+//         <input class="form-input" type="text" id="house-edit-floor" data-role="none" value="${floor}">
+//     </div>
+
+//     <div class="edit_text">
+//         <label class="form-label" for="house-edit-description">Description</label>
+
+//         <textarea class="form-input" id="hosue-edit-description">${description}</textarea>
+//     </div>
+
+//     `
+//     })

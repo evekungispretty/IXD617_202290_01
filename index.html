@@ -7,13 +7,13 @@
 	<link rel="stylesheet" href="src/css/app.css">
     <link rel="preconnect" href="https://fonts.googleapis.com"> 
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
-    <link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&family=Raleway:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
-	
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Oxygen:wght@300;400;700&family=Raleway:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
 	<script src="lib/js/jquery-2.2.4.min.js"></script>
 	
     <script type="module" src="src/js/app.js"></script>
     <script src="src/js/gradient.js"></script>
     <script src="src/js/alert.js"></script>
+    <script src="src/js/refresh.js"></script>
     <script src="lib/js/jquery.mobile-1.4.5.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAL5fUtgRtyuChwiPT0aCCNTBDc3xe-d6A"
     defer></script>
@@ -154,14 +154,16 @@
         </div>
     </section>
 
+
     <!-- SIGN UP PAGE -->
     <section data-role="page" id="signup-page">
         <div class="nav_back">
-            <a href="#signin-page"><img style="width: 2em;" src="img/icon_arrowback.svg" alt=""></a>        
+            <a href="#" data-rel="back"><img style="width: 2em;" src="img/icon_arrowback.svg" alt=""></a>        
         </div>
         <div class="header">
             <h1 style="padding: 0 7% 0 7%;">Sign Up</h1>
         </div>
+        
         <div data-role="main" class="display-flex flex-column flex-justify-center">
             <form class="form" id="signup-form" data-ajax="false">
                 <div class="form-control">
@@ -169,32 +171,35 @@
                     <input class="form-input" type="text" id="signup-username" data-role="none" placeholder="Type your Username">
                 </div>
                 <div class="form-control">
+                    <label class="form-label" for="signup-email">Email</label>
+                    <input class="form-input" type="text" id="signup-email" data-role="none" placeholder="Enter your Email">
+                </div>
+                <div class="warning">
+                    <p>Username or email cannot be blank.</p>
+                </div>
+
+                <div class="form-control">
                     <label class="form-label" for="signup-password">Type a Password</label>
                     <input class="form-input" type="password" id="signup-password" data-role="none" placeholder="Type your Password">
                 </div>
                 <div class="form-control">
                     <label class="form-label" for="signup-confirm">Confirm Password</label>
-                    <input class="form-input" type="password" id="signup-confirm" data-role="none" placeholder="Type your Password">
+                    <input class="form-input" type="password" id="signup-confirm" data-role="none" placeholder="Type your Password Again">
+                </div>
+                <div class="warning_password">
+                    <p>Password doesn't match, make sure you type the password correctly.</p>
                 </div>
                 <div class="form-controlbtn">
-                    <input type="submit" class="button-6" value="Create Account" data-role="none">
+                    <input type="submit" class="button-6" value="Create Account!" data-role="none">
                 </div>
                 <div class="form-control" style="text-align:center; font-size: 0.9em;">
                     Already have an account? <a href="#signin-page" style="font-size: 0.9em; color: var(--color-main-medium); font-weight: 700;">Sign In!</a>
                 </div>
+                
             </form>
+
+            
         </div>
-        <!-- <div class="container">
-            <input type="radio" id="tab1" name="tab" checked>
-            <label for="tab1"><i class="fa fa-code"></i> Features</label>
-            <input type="radio" id="tab2" name="tab">
-            <label for="tab2"><i class="fa fa-history"></i> History</label>
-            <input type="radio" id="tab3" name="tab">
-            <label for="tab3"><i class="fa fa-pencil"></i> Reviews</label>
-            <div class="line"></div>
-            <div class="content-container">
-              <div class="content" id="c1">
-        </div> -->
 
     </section>
 
@@ -216,6 +221,9 @@
                 </div>
                 <div class="next">
                     <a href="#onboarding2" class="button-6">Next</a>
+                </div>
+                <div class="skip">
+                    <a href="#recent-page" style="padding:2% 2%;" class="skip-button">Skip</a>
                 </div>
             </div>
     
@@ -263,6 +271,9 @@
                 <div class="next">
                     <a href="#recent-page" class="button-6">Get Started</a>
                 </div>
+                <div class="skip">
+                    <a href="#recent-page" style="padding:2% 2%;" class="skip-button">Skip</a>
+                </div>
             </div>
     
         </section>
@@ -274,6 +285,7 @@
 
     <!-- RECENT PAGE -->
     <section data-role="page" id="recent-page">
+        <!-- <script>window.location.reload(true)</script> -->
         <div class="header">
             <h1 style="padding: 0 7% 0 7%;">Map</h1>
         </div>
@@ -281,27 +293,28 @@
 
         <div data-role="main" class="homepage">
             <div class="card_small"></div>
+
             <div class="floater top left">
-                <a href="#" class="btn-circle" data-activate="#recent-add-modal"><img style="width: 100%;" src="img/add.svg" alt=""></a>
+                <a href="#house-add-page-location" class="btn-circle"><img style="width: 100%;" src="img/add.svg" alt=""></a>
             </div>
 
             <div class="map">
 
             </div>
-
+<!-- 
         <div id="recent-add-modal" class="modal">
                 <div class="modal-back transparent" data-deactivate="#recent-add-modal"></div>
                 <div class="modal-drawer left">
                     <div class="modal-head">
                         <h2>Add a Pin</h2></div>
                     <div class="modal-body">
-                        <!-- <h3>Add a description</h3> -->
-                        <label class="form-label" for="pin-title">Title</label>
-                        <input class="form-input addapin_input" type="text" id="input-title" data-role="none" placeholder="Title">
-                        <label class="form-label " for="pin-description">Description</label>
-                        <input class="form-input addapin_input" type="text" id="description" data-role="none" placeholder="Add a description for your pin">
-                        <label class="form-label" for="pin-image">Image</label>
-                        <input type="file" id="input-image" data-role="none">
+                
+                        <label class="form-label" for="house-add-name">Title</label>
+                        <input class="form-input addapin_input" type="text" id="house-add-name" data-role="none" placeholder="Title">
+                        <label class="form-label " for="house-add-description">Description</label>
+                        <input class="form-input addapin_input" type="text" id="house-add-description" data-role="none" placeholder="Add a description for your pin">
+                        <label class="form-label" for="house-add-image">Image</label>
+                        <input type="file" id="house-add-image" data-role="none">
                         <div class="form-controlbtn">
                             <div onclick="info_prompt('Saved!');">
                             <input class="button-6" value="Add Pin" data-deactivate="#recent-add-modal" data-role="none"></div>
@@ -310,7 +323,7 @@
                     </div>
                 </div>
         </div>
-          
+           -->
           
         </div>
 
@@ -329,7 +342,7 @@
                         <span>Map</span>
                     </a>
                 </li>
-                <li class="navli"><a href="#pin-page">
+                <li class="navli icon_pin"><a href="#pin-page">
                         <span class="nav_icon"><img style="width: 2em;" src="img/icon_note.svg" alt=""></span>
                         <span>Pins</span>
                     </a>
@@ -341,11 +354,109 @@
     </section>
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- ADD HOUSE PAGE -->
+
+
+    <!--CHOOSE LOCATION -->
+
+    <section data-role="page" id="house-add-page-location">
+        <header class="header" role="banner" data-role="header">
+            <h1 style="padding: 0 7% 0 7%;">Add a new house</h1>
+        </header>
+        <div data-role="main" class="main">
+            <input type="hidden" id="location-house-id">
+            <input type="hidden" id="location-lat">
+            <input type="hidden" id="location-lng">
+            <div class="addhouse_title">
+                <h2>Where is the house?</h2>
+                <h3>choose a locaiton on map✨</h3>
+            </div>
+            <div class="map"></div>
+
+        </div>
+        <footer data-role="footer" class="nav-form-container">
+            <div class="nav-form">
+                <a href="#house-add-page">
+                <input class="button-6" style="font-size: 1.3em;" type="reset"  value="Next" data-role="none">
+                </a></div>
+            <div class="nav-form">
+                <a href="#" data-rel="back">
+                <input style="font-size:1.3em;" type="reset" class="button-cancel" value="Cancel" data-role="none">
+                </a>
+            </div> 
+        </footer>       
+
+    </section>
+
+
+    <!-- CHOOSE HOUSE DEATILS-->
+
+    <section data-role="page" id="house-add-page">
+        <header class="header" role="banner" data-role="header">
+            <h1 style="padding: 0 7% 0 7%;">Add a new house</h1>
+        </header>
+        <div data-role="main" class="main">
+            <div>
+                <label class="form-label" for="house-add-name">Title</label>
+                <input class="form-input addapin_input" type="text" id="house-add-name" data-role="none" placeholder="Title">
+
+                <label class="form-label" for="house-add-type">What kind of house is this?</label>
+                <input class="form-input addapin_input" type="text" id="house-add-type" data-role="none" placeholder="Architecture Type">
+                <label class="form-label" for="house-add-floor">How many floor does it has?</label>
+                <input class="form-input addapin_input" type="text" id="house-add-floor" data-role="none" placeholder="1, 2, 3 or more?">
+                <label class="form-label " for="house-add-description">Description</label>
+                <input class="form-input addapin_input" type="text" id="house-add-description" data-role="none" placeholder="Add a description for this house">
+                <label class="form-label" for="house-add-image">Image</label>
+                <input type="file" id="house-add-image" data-role="none">
+
+            </div>
+        </div>
+
+        <footer data-role="footer" class="nav-form-container">
+                <div class="nav-form js-submit-house-add-form js-submit-location-add-form">
+                    <div onclick="info_prompt('Saved!');">
+                    <input class="button-6" value="Add!" type="submit"  data-role="none"></div>
+                </div> 
+                <div class="nav-form" >
+                    <a href="#" data-rel="back">
+                    <input style="font-size:1.3em;" type="reset" class="button-cancel" value="Back" data-role="none">
+                    </a>
+                </div>     
+            
+        </footer>    
+        
+    
+
+
+    </section>
+
+  
+
     <!-- MY PINS PAGE -->
     <section data-role="page" id="pin-page">
-        <div class="header">
+        <header class="header" role="banner" data-role="header">
             <h1 style="padding: 0 7% 0 7%;">My Pins</h1>
-        </div>
+        </header>
         <div data-role="main" class="main">
             <div class="houselist"></div>
         </div>
@@ -364,7 +475,7 @@
                         <span>Map</span>
                     </a>
                 </li>
-                <li class="navli navactive"><a href="#pin-page">
+                <li class="navli navactive icon_pin"><a href="#pin-page">
                         <span class="nav_icon"><img style="width: 2em;" src="img/icon_note.svg" alt=""></span>
                         <span>Pins</span>
                     </a>
@@ -377,14 +488,34 @@
 
     <!-- USER PROFILE PAGE -->
     <section data-role="page" id="user-profile-page">
-        <script src="src/js/expand.js"></script>
         <div class="header">
             <h1 style="padding: 0 7% 0 7%;">User Profile</h1>
         </div>
         <div data-role="main center" class="main">
-            <div class="profilepage">
+            <div class="profilepage"></div>
+
+
+            <a href="#user-edit-page">
+            <div class="profile_block">
+                <div class="profile_container">       
+                    <img src="img/icon_editprofile.svg" alt="">
+                    <h2>Edit Profile</h2>
+                </div>
+            </div>
+            </a>
+
+
+            <a href="#log-out">
+            <div class="profile_block">
+                <div class="profile_container">
+                    <img src="img/icon_settings.svg" alt="">
+                    <h2>Settings</h2>
+                </div>
 
             </div>
+            </a>
+
+
 
             <div class="user-house"></div>
 
@@ -430,8 +561,8 @@
                         <span>Map</span>
                     </a>
                 </li>
-                <li class="navli"><a href="#pin-page">
-                        <span class="nav_icon"><img style="width: 2em;" src="img/icon_note.svg" alt=""></span>
+                <li class="navli icon_pin"><a href="#pin-page">
+                        <span class="nav_icon "><img style="width: 2em;" src="img/icon_note.svg" alt=""></span>
                         <span>Pins</span>
                     </a>
                 </li>
@@ -440,6 +571,99 @@
         </footer>
 
     </section>
+
+
+
+    <!-- Edit User -->
+
+    <section data-role="page" id="user-edit-page">
+
+        <div class="header">
+            <h1 style="padding: 0 7% 0 7%;">Edit Profile</h1>
+        </div>
+
+        <div data-role="main center" class="main">
+    
+        </div>
+        <div class="form-controlbtn js-submit-user-edit-form" style="margin: 5% 0;">
+            <input type="submit" class="button-6" value="Submit" data-role="none">
+        </div>
+
+        <div class="form-controlbtn" style="margin: 5% 0;">
+            <a href="#" data-rel="back">
+            <input style="font-size:1.3em;" type="reset" class="button-cancel" value="Cancel" data-role="none">
+            </a>
+        </div>
+
+    </section>
+
+
+
+
+  <!-- PASSWORD EDIT PAGE -->
+  <section data-role="page" id="password-edit-page">
+    <header data-role="header">
+        <div class="header">
+            <h1 style="padding: 0 7% 0 7%;">Edit Password</h1>
+        </div>
+        
+    </header>
+    <div data-role="main center" class="main">
+        <form data-role="main" data-ajax="false" id="password-edit-form" class="padded display-flex flex-column full overscroll">
+            <div class="body">
+                <div class="form-control">
+                    <label class="form-label" for="password-edit-password">New Password</label>
+                    <input class="form-input" type="password" id="password-edit-password" data-role="none" placeholder="Type a new password">
+                </div>
+                <div class="form-control">
+                    <label class="form-label" for="password-edit-confirm">Confirm New Password</label>
+                    <input class="form-input" type="password" id="password-edit-confirm" data-role="none" placeholder="Type the same password">
+                </div>
+            </div>
+        </form>
+
+        <div class="form-controlbtn js-submit-password-edit-form" style="margin-top: -20%;" onclick="info_prompt('Password Changed!');">
+            <input type="submit" class="button-6" value="Submit" data-role="none">
+        </div>
+
+
+    </div>
+    
+
+
+    <div class="form-controlbtn" style="margin: 5% 0;">
+        <a href="#" data-rel="back">
+        <input style="font-size:1.3em;" type="reset" class="button-cancel" value="Cancel" data-role="none">
+        </a>
+    </div>
+</section>
+
+
+
+    <!-- LOG OUT -->
+    <section data-role="page" id="log-out">
+        <div class="main">
+            <h2 style="margin-top: 80%; text-align: center;">Oh hey! What are you looking to do?🙂</h2>
+           
+            <div class="form-control-logout">
+                <a href="#password-edit-page" style="justify-content: center;
+                display: flex;"><input type="submit" class="button-6" value="Change Password" data-role="none"></a>
+            </div>
+            <div class="form-control-logout">
+                <a href="#signin-page" style="justify-content: center;
+                display: flex;"><input type="submit" class="button-6" value="Log Out" data-role="none"></a>
+            </div>
+        </div>
+        
+        <div class="form-controlbtn" style="margin: 5% 0;">
+            <a href="#" data-rel="back">
+            <input class="button-cancel" type="submit" value="Back" data-role="none">
+            </a>
+        </div>
+
+    </section>
+
+
 
 
     <!-- HOUSE PROFILE PAGE -->
@@ -464,12 +688,51 @@
 
 
 
+  <!-- USER EDIT PHOTO PAGE -->
+  <section data-role="page" id="user-edit-photo-page">
+    <header data-role="header">
+        <div class="header">
+            <h1 style="padding: 0 7% 0 7%;">Edit Profile Picture</h1>
+        </div>
+    </header>
+
+    <div data-role="main center" class="main">
+        <form data-role="main" data-ajax="false" id="user-edit-photo-form" class="padded display-flex flex-column full overscroll">
+            <!-- <input type="hidden" id="user-edit-photo-image"> -->
+            <input type="file" id="user-edit-photo-image" data-role="none" class="hidden">
+
+            <label class="user-image imagepicker replace">
+               
+            </label>
+        </form>
+
+
+        <div class="form-controlbtn js-submit-user-edit-photo-form" style="margin-top: -20%;">
+     
+                <input type="submit" class="button-6" value="Submit" data-role="none">
+
+        </div>
+
+
+    </div>
+    
+
+
+    <div class="form-controlbtn" style="margin: 5% 0;">
+        <a href="#" data-rel="back">
+        <input style="font-size:1.3em;" type="reset" class="button-cancel" value="Cancel" data-role="none">
+        </a>
+    </div>
+</section>
+
+
+
 
 
     <!-- Edit House -->
     <section data-role="page" id="edit-page">
         <div class="nav_back" style="top: 1%;">
-            <a href="#house-profile-page">
+            <a href="#" data-rel="back">
             <p style="font-size: 0.9em; color: var(--color-neutral-medium);">Cancel</p>       
             </a>
         </div>
@@ -479,9 +742,12 @@
         </div>
 
         <div class="edit">
-            <div class="button_small" onclick="info_prompt('Saved!');">
-                <a href="#house-profile-page">Done</a></li>
+            <div class="button_small js-submit-house-edit-form" onclick="info_prompt('Saved!');">
+                <a href="#" >Done</a>
             </div>
+
+
+           
             
         </div>
 
@@ -494,8 +760,77 @@
 
     </section>
 
+    <!-- CONFIRMATION PAGE -->
 
+    <section data-role="page" id="delete-confirm-page">
+        <div class="delete_confirm main">
+            <h2>Are you sure you want to delete?</h2>
+            <h3>Once deleted, you cannot retrieve your data anymore.</h3>
+            <div class="delete_confirm_container" onclick="info_prompt('Deleted!')";>
+                <div class="button-6 js-delete-house" style="font-size:1.3em;" data-role="none" >
+                    <a href="#">Delete</a>
+                </div>
+                <div class="button-cancel" type="submit">
+                    <a href="#" data-rel="back">
+                        <input style="font-size:1.3em;" type="reset" class="button-cancel" value="Cancel" data-role="none">
+                    </a>
+                </div>
+                
+    
+    
+            </div>
+        </div>
+    
+    
+
+
+    </section>
+
+    
 
 </body>
 
 </html>
+
+
+<!--     <div class="edit_img">
+        <div class="one">
+            <img style="width:80vw;" src="${img}" alt="">
+        </div>
+        
+        <div class="two">
+            <label class="form-label" for="house-edit-image">Replace Image</label>
+            <input type="file" id="house-edit-image" data-role="none">
+        </div>
+    </div> -->
+
+
+    <!--  <script type="text/javascript"> 
+        $(document).ready(function() {
+            $("#username").blur(function(e) {
+                var username = $(this).val();
+                if (username == "")
+                {
+                    $(".warning").css("display", "block");
+                    $(".js-submit-check-username").attr("disabled", true);
+                }
+                else
+                {
+                    $.ajax({
+                        url: "api.php",
+                        data: {username},
+                        type: "POST",
+                        success: function(data) {
+                            if(data > '0') {
+                                $("#msg").html('<span class="text-danger">Username is already taken!</span>');
+                                $(".js-submit-check-username").attr("disabled", true);
+                            } else {
+                                $("#msg").html('<span class="text-success">Username is available!</span>');
+                                $(".js-submit-check-username").attr("disabled", false);
+                            }
+                        }
+                    });
+                }
+            });
+            });
+        </script> -->
