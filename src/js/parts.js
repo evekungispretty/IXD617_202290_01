@@ -20,10 +20,11 @@ export const makeHouseCard = templater(({id,name,type,date_create,img})=>`
 `)
 
 
-export const makeEmptyHouseCard = () => {`
-    <div>
-        <h1>You don't have any houses yet.</h1>
-        <div class="button-6"><a href="#house-add-page">Start Here</a></div>
+export const makeEmptyHouseCard = () => {
+    return `
+    <div class="empty-house">
+        <h2 style="text-align: center;">You don't have any houses yet.</h2>
+        <div class="button-6"><a href="#house-add-page-location">Start Here</a></div>
     </div>
 `}
 
@@ -46,15 +47,11 @@ export const makeUserProfilePage = ({id,name,email,username,img})=>`
         <a href="#user-edit-photo-page">
             <img src="${img}" alt="">
         </a>
-        <h3>${name}</h3>
+        <h2>${name}</h2>
+        <div style="margin-top: -7%;">
+            <h3>@${username}</h3>
+        </div>
     </div>
-
-    <form class="form" id="form-logout" data-ajax="false">
-            <div class="form-control">
-                <div class="user-profile-name">${name}</div>
-                <div class="user-profile-username">@${username}</div>
-                <div class="user-profile-email">${email}</div>
-            </div>
 
 </div>
 `
@@ -72,7 +69,17 @@ export const makeUserHouse = templater(({id, img})=>`
 export const makeEditUser = ({name,username,email}) => {
     
     return `
-    <div class="form-control">
+    
+    <form data-ajax="false" id="user-edit-photo-form" class="padded display-flex flex-column full overscroll">
+    
+        <input type="hidden" id="user-edit-photo-image" data-role="none">
+
+        <label class="user-image imagepicker replace">
+            <input type="file" id="user-edit-photo-input" data-role="none" class="image-upload-btn">
+        </label>
+    </form>
+
+    <div class="form-control" style="margin-top: 20%;">
         <label class="form-label" for="user-edit-username">Username</label>
         <input class="form-input" type="text" id="user-edit-username" data-role="none" placeholder="Type your Username" value="${username}">
     </div>
@@ -83,7 +90,10 @@ export const makeEditUser = ({name,username,email}) => {
     <div class="form-control">
         <label class="form-label" for="user-edit-email">Email</label>
         <input class="form-input" type="text" id="user-edit-email" data-role="none" placeholder="Type your Email" value="${email}">
-    </div>`
+    </div>
+
+    `
+
 }
 
 
@@ -130,16 +140,23 @@ export  const makeHouseProfile = templater(({id,type,floor,img,date_create,descr
 export  const makeHouseProfileEdit = templater(({id,name,type,floor,img,description})=>{
     return `
     <div class="edit_img">
-        <div class="edit_name">
-            <label class="form-label" for="house-edit-name">Name</label>
-            <input class="form-input" type="text" id="house-edit-name" data-role="none" value="${name}">     
-        </div>
-        <div class="two">
-            <label class="form-label" for="house-edit-image">Replace Image</label>
-            <input type="file" id="house-edit-image" data-role="none">     
+        <div class="form-control">
+            <input type="hidden" id="house-edit-photo-image" value="${img??""}">
+            <label class="house-image imagepicker replace thumbnail ${img?"picked":""}" style="background-image:url('${img}')">
+                <input type="file" id="house-edit-photo-input" data-role="none" class="image-upload-btn house-image-upload-btn">
+            </label>
         </div>
     </div>
 
+    <div class="edit_name">
+        <label class="form-label" for="house-edit-name">Name</label>
+        <input class="form-input" type="text" id="house-edit-name" data-role="none" value="${name}">     
+    </div>
+
+
+
+
+   
     <div class="edit_type">
         <label class="form-label" for="house-edit-type">Type</label>
         <input class="form-input" type="text" id="house-edit-type" data-role="none" value="${type}">
@@ -158,7 +175,7 @@ export  const makeHouseProfileEdit = templater(({id,name,type,floor,img,descript
     </div>
 
     <div class="delete">
-        <a href="#delete-confirm-page" class="delete-btn"><img src="./img/icon_delete.svg"></a>
+        <a href="#delete-confirm-page" class="delete-btn"><img style="width: 40px;" src="./img/icon_delete.svg">Delete</a>
     
     </div>
 

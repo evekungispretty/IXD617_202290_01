@@ -35,24 +35,70 @@ export const HouseAddPageLocation = async() => {
 }
 
 
+const sortAnimalsnew = (a,b)=>{
+    if(a.date_create > b.date_create){
+        return -1
+    }else if (a.date_create < b.date_create){
+        return 1
+    }else if(a.date_create = b.date_create){
+        return 0
+    }
+}
+const sortAnimalsold = (a,b)=>{
+    if(a.date_create > b.date_create){
+        return 1
+    }else if (a.date_create < b.date_create){
+        return -1
+    }else if(a.date_create = b.date_create){
+        return 0
+    }
+}
+
+const sortList = (houseList)=>{
+
+        switch (sessionStorage.listSortby ){
+            case 'new':
+                houseList.sort(sortAnimalsnew)
+            break;
+
+            case 'old':
+                houseList.sort(sortAnimalsold)
+            break;
+
+            default:
+                houseList.sort(sortAnimalsold)
+                sessionStorage.listSortby = 'new'
+            break;
+        }
+    return houseList
+}
+
+
 export const PinPage = async() => {
 
     let {result:animals} = await query({
         type:"animals_by_user_id",
         params:[sessionStorage.userId]
     });
-    console.log(animals)
-    
 
-    if (animals.length == 0) {
-        $("#pin-page .houselist").html(makeEmptyHouseCard(animals));
+
+
+    if (animals.length === 0) {
+        $("#pin-page .houselist").html(makeEmptyHouseCard());
+        console.log("hello")
 
     }
 
     else {
+
         $("#pin-page .houselist").html(makeHouseList(animals));
 
+
+
     }
+
+
+
 }
 
 
@@ -102,6 +148,9 @@ export const UserEditPage = async() => {
     let [user] = users;
 
     $("#user-edit-page .main").html(makeEditUser(user));
+    $("#user-edit-page .user-image").css({
+        "background-image": `url('${user.img}')`
+    });
 }
 
 export const UserEditPhotoPage = async() => {
@@ -159,3 +208,4 @@ export const HouseEditPage = async() => {
     $("#edit-page .house-edit").html(makeHouseProfileEdit(houseedit));
 
 }
+

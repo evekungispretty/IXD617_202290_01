@@ -40,3 +40,5 @@ export const checkUpload = (file) => {
         else return d;
     })
 }
+
+

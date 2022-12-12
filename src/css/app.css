@@ -39,7 +39,7 @@ h1 {
 }
 
 h2 {
-    font-size: 1.1em;
+    font-size: 1em;
     font-weight: 600;
     font-family: var(--font-header);
     color: var(--color-neutral-medium);
@@ -59,6 +59,18 @@ p {
     font-weight: 400;
     font-size: 0.8em;
 }
+
+
+
+
+
+
+.hidden { display:none; }
+
+
+
+
+
 
 .form-input {
     border-width: 2px;
@@ -109,7 +121,8 @@ p {
 }
 
 .nav-form-container {
-    padding: 20% 0;
+    /* padding: 20% 0; */
+    padding-bottom: 12%;
 }
 
 /* Sign in page */
@@ -346,6 +359,11 @@ svg {
 
 /* App Structure */
 
+.display-flex {
+    display: flex;
+    justify-content: center;
+}
+
 .ui-loader {
     display:none
 }
@@ -500,9 +518,6 @@ svg {
 }
 
 
-/* .active {
-    filter: invert(47%) sepia(68%) saturate(1180%) hue-rotate(320deg) brightness(109%) contrast(100%);
-  } */
 
 .nav-form {
     position: relative;
@@ -540,6 +555,14 @@ svg {
     margin-top: 2%;
 }
 
+/* Empty States */
+.empty-house {
+    position: relative;
+    top: 200%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 
 /* My Pins */
 
@@ -548,6 +571,7 @@ svg {
     grid-template-columns: 1fr 1fr;
     grid-gap: 1%;
     row-gap: 1%;
+    margin-top: 10%;
 
 }
 #pin-page {
@@ -692,9 +716,15 @@ svg {
     margin: 3%;
 }
 
-.profile h3 {
+.profile h2 {
     font-size: 1em;
     color: var(--color-main-dark);
+    font-weight: bold;
+
+}
+.profile h3 {
+    font-size: 1em;
+    color: var(--color-main-neutral);
 
 }
 
@@ -747,14 +777,101 @@ svg {
     margin: 2% 0; 
 }
 
-
-.user-image {
-    width: 100vw;
-    height: 50vh;
+#user-edit-photo-form {
     display: flex;
-    background-size: contain;
+    justify-content: center;
+}
+.user-image {
+    height: 200px;
+    width: 200px;
+    display: flex;
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    border-radius: 50%;
+
+}
+
+.house-add-image {
+    display: flex;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 250px;
+    border: 1px dashed var(--color-neutral-light);
+}
+
+.image-upload-btn::-webkit-file-upload-button {
+    visibility: hidden;
+}
+
+.image-upload-btn:before {
+    content: 'Replace Image';
+    display: inline-block;
+    background: white;
+    border: 1px solid #999;
+    border-radius: 3px;
+    padding: 5px 8px;
+    outline: none;
+    white-space: nowrap;
+    cursor: pointer;
+    color: var(--color-main-neutral);
+    font-weight: 700;
+    font-size: 0.9em;
+    margin-top: 45%;
+    margin-left: 25%;
+}
+
+.image-upload-btn2::-webkit-file-upload-button {
+    visibility: hidden;
+}
+
+.image-upload-btn2:before {
+    content: 'Upload Image';
+    display: inline-block;
+    background: white;
+    border: 1px solid #999;
+    border-radius: 3px;
+    padding: 5px 8px;
+    outline: none;
+    white-space: nowrap;
+    cursor: pointer;
+    color: var(--color-main-neutral);
+
+    font-weight: 700;
+    font-size: 0.9em;
+    margin-top: 45%;
+    margin-left: 50%;
+}
+
+
+.house-image-upload-btn {
+    margin-top: 66%;
+    margin-left: 28%;
+
+}
+
+.image-add-btn::-webkit-file-upload-button {
+    visibility: hidden;
+}
+
+.image-add-btn {
+    content: 'Replace Image';
+    display: inline-block;
+    background: white;
+    border: 1px solid #999;
+    border-radius: 3px;
+    padding: 5px 8px;
+    outline: none;
+    white-space: nowrap;
+    cursor: pointer;
+    color: var(--color-main-neutral);
+
+    font-weight: 700;
+    font-size: 0.9em;
+    margin-top: 45%;
+    margin-left: 25%;
+
 }
 
 
@@ -832,11 +949,46 @@ svg {
     animation: fadeIn 1s;
   }
 
+.delete {
+    padding: 5%;
+}
+
 .delete_confirm {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    
+}
+
+.delete-btn {
+    color: var(--color-main-dark);
+    text-align: center;
+    align-items: center;
+    background-color: var(--color-neutral-light);
+    border: none;
+    border-radius: 6px;
+    box-shadow: rgb(0 0 0 / 2%) 0 1px 3px 0;
+    box-sizing: border-box;
+    cursor: pointer;
+    display: inline-flex;
+    font-family: var(--font-body);
+    font-size: 1.1em;
+    font-weight: 600;
+    justify-content: center;
+    line-height: 1.25;
+    margin: 0;
+    min-height: 60px;
+    padding: calc(0.875rem - 3px) calc(1.5rem - -21px);
+    position: relative;
+    text-decoration: none;
+    transition: all 250ms;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: baseline;
+    width: 100%;
+    appearance: value;
+
+
 }
 
 @-webkit-keyframes fadeIn {
@@ -892,12 +1044,14 @@ input [type="submit"]{
 input[type="text"]:focus,
 input[type="password"]:focus {
     outline: 3px solid #FE6975 !important;
+    border: none;
     
   }
 
-input:-webkit-autofill:focus {
-    outline: none !important;
-}
+select:focus-visible {
+    border: 3px solid #FE6975 !important;
+  }
+
 
 .button-6 {
     color: var(--color-main-dark);
@@ -954,7 +1108,7 @@ input:-webkit-autofill:focus {
     color: var(--color-main-dark);
     text-align: center;
     align-items: center;
-    background-color: #f8f8f8;
+    background-color: #f3f3f3;
     border: none;
     border-radius: 6px;
     box-shadow: rgb(0 0 0 / 2%) 0 1px 3px 0;
@@ -966,9 +1120,9 @@ input:-webkit-autofill:focus {
     font-weight: 600;
     justify-content: center;
     line-height: 1.25;
-    margin: 0;
-
-    padding: calc(1.25rem - 0px) calc(1.5rem - -21px);
+    margin-top: 2% ;
+    min-height: 60px;
+    padding: calc(0.875rem - 3px) calc(1.5rem - -21px);
     position: relative;
     text-decoration: none;
     transition: all 250ms;
@@ -978,7 +1132,6 @@ input:-webkit-autofill:focus {
     vertical-align: baseline;
     width: 92vw;
     appearance: value;
-
 }
 
 
@@ -1154,8 +1307,8 @@ input:-webkit-autofill:focus {
 
 /* Edit Page */
 .edit_img {
-    display: grid;
-    grid-column: span 12;
+    display: flex;
+    justify-content: center;
     margin: 0% 5%;
     row-gap: 4%;
     column-gap: 4%;
@@ -1171,6 +1324,15 @@ input:-webkit-autofill:focus {
     margin-top: 10%;
 }
 
+.house-image {
+    display: flex;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 500px;
+    height: 500px;
+}
+
 
 textarea {
     width: 80vw;
@@ -1179,6 +1341,11 @@ textarea {
     font-family: var(--font-body);
     color: #333333;
     font-size: 0.8em;
+}
+
+.edit_name {
+    margin: 5%;
+    padding-top: 5%;
 }
 
 .edit_type {

@@ -15,6 +15,15 @@ export const checkSignupForm = () => {
         throw("password failed, show the user");
         return;
     }
+    if (username === "" || email === "") {
+        // tell user to try again
+        $(".warning").css("display", "block");
+        setTimeout(()=>{$(".warning").css("display", "none");},3000)
+        console.log("Failure");
+        return;
+    }
+
+
 
     query({
         type: 'insert_user',
@@ -32,7 +41,7 @@ export const checkSignupForm = () => {
             
         } else {
             sessionStorage.userId = data.id;
-            $.mobile.navigate("#recent-page");
+            $.mobile.navigate("#onboarding1");
             
         }
     })
@@ -100,6 +109,7 @@ export const checkSignupForm = () => {
 
  
 export const checkUserEditForm = () => {
+    let img = $("#user-edit-photo-image").val();
     let name = $("#user-edit-name").val();
     let username = $("#user-edit-username").val();
     let email = $("#user-edit-email").val();
@@ -108,6 +118,7 @@ export const checkUserEditForm = () => {
     query({
         type: 'update_user',
         params: [
+            img,
             name,
             username,
             email,
@@ -146,23 +157,23 @@ export const checkPasswordEditForm = () => {
     })
 }
 
-export const checkUserEditPhotoForm = () => {
-    let img = $("#user-edit-photo-image").val();
+// export const checkUserEditPhotoForm = () => {
+//     let img = $("#user-edit-photo-image").val();
     
-    query({
-        type: 'update_user_photo',
-        params: [
-            img,
-            sessionStorage.userId
-        ]
-    }).then((data)=>{
-        if (data.error) {
-            throw(data.error);
-        } else {
-            window.history.go(-1);
-        }
-    })
-}
+//     query({
+//         type: 'update_user_photo',
+//         params: [
+//             img,
+//             sessionStorage.userId
+//         ]
+//     }).then((data)=>{
+//         if (data.error) {
+//             throw(data.error);
+//         } else {
+//             window.history.go(-1);
+//         }
+//     })
+// }
 
 
 
@@ -173,8 +184,10 @@ export const checkHouseAddForm = () => {
     let type = $("#house-add-type").val();
     let floor = $("#house-add-floor").val();
     let description = $("#house-add-description").val();
+    let img = $("#house-add-photo-image").val();
     let lat = $("#location-lat").val();
     let lng = $("#location-lng").val();
+   
     
     query({
         type: 'insert_animal',
@@ -184,8 +197,10 @@ export const checkHouseAddForm = () => {
             type,
             floor,
             description,
+            img,
             lat,
             lng
+            
         ]
     }).then((data)=>{
         if (data.error) {
@@ -197,6 +212,7 @@ export const checkHouseAddForm = () => {
 }
 
 export const checkHouseEditForm = () => {
+    let img = $("#house-edit-photo-image").val();
     let name = $("#house-edit-name").val();
     let type = $("#house-edit-type").val();
     let floor = $("#house-edit-floor").val();
@@ -207,6 +223,7 @@ export const checkHouseEditForm = () => {
     query({
         type: 'update_animal',
         params: [
+            img,
             name,
             type,
             floor,
@@ -223,6 +240,7 @@ export const checkHouseEditForm = () => {
     })
 
 }
+
 
 
 
@@ -263,7 +281,8 @@ export const checkHouseDeleteForm = () => {
 export const checkLocationDeleteForm = () => {
     query({
         type:"delete_location",
-        params:[sessionStorage.House_Id]
+        params:[
+            sessionStorage.House_Id]
     }).then((data)=>{
         if (data.error) {
             throw(data.error);
@@ -274,3 +293,20 @@ export const checkLocationDeleteForm = () => {
         }
     })
 }
+
+// export const checkSort = (filter,value) => {
+//     query({
+//         type:"sort_animals",
+//         params:[
+//             sessionStorage.userId,
+            
+//         ]
+//     }).then((data)=>{
+//         if (data.error) {
+//             throw(data.error);
+//         } else {
+//             let {result} = data;
+            
+//         }
+//     })
+// }

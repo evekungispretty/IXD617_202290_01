@@ -13,7 +13,7 @@
     <script type="module" src="src/js/app.js"></script>
     <script src="src/js/gradient.js"></script>
     <script src="src/js/alert.js"></script>
-    <script src="src/js/refresh.js"></script>
+    <!-- <script type="module" src="src/js/sort.js"></script> -->
     <script src="lib/js/jquery.mobile-1.4.5.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAL5fUtgRtyuChwiPT0aCCNTBDc3xe-d6A"
     defer></script>
@@ -27,7 +27,7 @@
 
     <!-- SIGN IN PAGE -->
     <section data-role="page" id="signin-page">
-        <div data-role="main" class="display-flex flex-column">
+        <div data-role="main" class=" flex-column">
             <div class="flex-stretch signin-hero">
                 <div class="header">
                     <h1>House Hunting</h1>
@@ -148,7 +148,7 @@
                     <input type="submit" class="button-6" value="Sign In" data-role="none">
                 </div>
                 <div class="form-control" style="text-align:center; font-size: 0.9em;">
-                    Don't have an account? <a href="#signup-page" style="background-color:white; font-size: 0.9em; color: var(--color-main-medium); font-weight: 700;">Sign Up!</a>
+                    Don't have an account? <a href="#signup-page" style="font-size: 0.9em; color: var(--color-main-medium); font-weight: 700;">Sign Up!</a>
                 </div>
             </form>
         </div>
@@ -164,7 +164,7 @@
             <h1 style="padding: 0 7% 0 7%;">Sign Up</h1>
         </div>
         
-        <div data-role="main" class="display-flex flex-column flex-justify-center">
+        <div data-role="main" class="flex-column flex-justify-center">
             <form class="form" id="signup-form" data-ajax="false">
                 <div class="form-control">
                     <label class="form-label" for="signup-username">Username</label>
@@ -248,6 +248,9 @@
                 <div class="next">
                     <a href="#onboarding3" class="button-6">Next</a>
                 </div>
+                <div class="skip">
+                    <a href="#recent-page" style="padding:2% 2%;" class="skip-button">Skip</a>
+                </div>
             </div>
     
 
@@ -270,9 +273,6 @@
                 </div>
                 <div class="next">
                     <a href="#recent-page" class="button-6">Get Started</a>
-                </div>
-                <div class="skip">
-                    <a href="#recent-page" style="padding:2% 2%;" class="skip-button">Skip</a>
                 </div>
             </div>
     
@@ -413,7 +413,7 @@
 
     <section data-role="page" id="house-add-page">
         <header class="header" role="banner" data-role="header">
-            <h1 style="padding: 0 7% 0 7%;">Add a new house</h1>
+            <h1 style="padding: 0 7% 0 7%;">Add some details 🖍</h1>
         </header>
         <div data-role="main" class="main">
             <div>
@@ -421,14 +421,42 @@
                 <input class="form-input addapin_input" type="text" id="house-add-name" data-role="none" placeholder="Title">
 
                 <label class="form-label" for="house-add-type">What kind of house is this?</label>
-                <input class="form-input addapin_input" type="text" id="house-add-type" data-role="none" placeholder="Architecture Type">
+                <select id="house-add-type" name="type" class="form-input addapin_input" data-role="none">
+                    <option style="color:gray" value="null">Architecture Type</option>
+                    <option value="Queen Anne"> Queen Anne </option>
+                    <option value="Gothic Revival"> Gothic Revival </option>
+                    <option value="Rousseau Homes"> Rousseau Homes </option>
+                    <option value="Mission Revival"> Mission Revival </option>
+                    <option value="Shingle Style"> Shingle Style </option>
+                </select>
+                <script>
+                    $(document).ready(function() {
+                        $('#house-add-type').css('color','gray');
+                        $('#house-add-type').change(function() {
+                            var current = $('#house-add-type').val();
+                            if (current != 'null') {
+                                $('#house-add-type').css('color','black');
+                            } else {
+                                $('#house-add-type').css('color','gray');
+                            }
+                        }); 
+                        });
+                </script>
+
+
+
+
+
+                <!-- <input class="form-input addapin_input" type="text" id="house-add-type" data-role="none" placeholder="Architecture Type"> -->
                 <label class="form-label" for="house-add-floor">How many floor does it has?</label>
                 <input class="form-input addapin_input" type="text" id="house-add-floor" data-role="none" placeholder="1, 2, 3 or more?">
                 <label class="form-label " for="house-add-description">Description</label>
                 <input class="form-input addapin_input" type="text" id="house-add-description" data-role="none" placeholder="Add a description for this house">
-                <label class="form-label" for="house-add-image">Image</label>
-                <input type="file" id="house-add-image" data-role="none">
-
+                <label class="form-label " for="house-add-photo-image">Photo of house</label>
+                <input type="hidden" id="house-add-photo-image">
+                    <label class="house-add-image imagepicker replace">
+                        <input type="file" id="house-add-photo-input" data-role="none" class="image-upload-btn2">
+                    </label>
             </div>
         </div>
 
@@ -458,7 +486,30 @@
             <h1 style="padding: 0 7% 0 7%;">My Pins</h1>
         </header>
         <div data-role="main" class="main">
+            <div class="house_sort">
+                <!-- <div class="js-sort sort-active" data-sort="new">New</div>
+                <div class="js-sort" data-sort="old">Old</div> -->
+                <!-- <div class="form-select">
+                    <select class="js-sort">
+                        <option value="1" data-sort="new">Newest</option>
+                        <option value="2" data-sort="old">Oldest</option>
+                    </select>
+                </div>  -->
+            </div>
+
             <div class="houselist"></div>
+            <!-- <script>
+            $(() => {
+                    $('.js-sort').click(function(e) {
+                        $(".houselist").html($('#date').sort(function(x, y) {
+                            return $(x).val() < $(y).val() ? -1 : 1;
+                        }))
+                        $(".houselist").get(0).selectedIndex = 0;
+                        e.preventDefault();
+                        });
+
+            });
+            </script> -->
         </div>
         <footer data-role="footer" class="nav">
             <ul>
@@ -585,7 +636,7 @@
         <div data-role="main center" class="main">
     
         </div>
-        <div class="form-controlbtn js-submit-user-edit-form" style="margin: 5% 0;">
+        <!-- <div class="form-controlbtn js-submit-user-edit-form" style="margin: 5% 0;">
             <input type="submit" class="button-6" value="Submit" data-role="none">
         </div>
 
@@ -593,7 +644,20 @@
             <a href="#" data-rel="back">
             <input style="font-size:1.3em;" type="reset" class="button-cancel" value="Cancel" data-role="none">
             </a>
-        </div>
+        </div> -->
+
+        <footer data-role="footer" class="nav-form-container">
+            <div class="nav-form js-submit-user-edit-form ">
+                <div onclick="info_prompt('Saved!');">
+                <input class="button-6" value="Submit" type="submit"  data-role="none"></div>
+            </div> 
+            <div class="nav-form" >
+                <a href="#" data-rel="back">
+                <input style="font-size:1.3em;" type="reset" class="button-cancel" value="Back" data-role="none">
+                </a>
+            </div>     
+    
+        </footer>    
 
     </section>
 
@@ -609,7 +673,7 @@
         
     </header>
     <div data-role="main center" class="main">
-        <form data-role="main" data-ajax="false" id="password-edit-form" class="padded display-flex flex-column full overscroll">
+        <form data-role="main" data-ajax="false" id="password-edit-form" class="padded flex-column full overscroll">
             <div class="body">
                 <div class="form-control">
                     <label class="form-label" for="password-edit-password">New Password</label>
@@ -689,7 +753,7 @@
 
 
   <!-- USER EDIT PHOTO PAGE -->
-  <section data-role="page" id="user-edit-photo-page">
+  <!-- <section data-role="page" id="user-edit-photo-page">
     <header data-role="header">
         <div class="header">
             <h1 style="padding: 0 7% 0 7%;">Edit Profile Picture</h1>
@@ -698,11 +762,11 @@
 
     <div data-role="main center" class="main">
         <form data-role="main" data-ajax="false" id="user-edit-photo-form" class="padded display-flex flex-column full overscroll">
-            <!-- <input type="hidden" id="user-edit-photo-image"> -->
-            <input type="file" id="user-edit-photo-image" data-role="none" class="hidden">
+
+            <input type="hidden" id="user-edit-photo-image" data-role="none">
 
             <label class="user-image imagepicker replace">
-               
+                <input type="file" id="user-edit-photo-input" data-role="none" class="hidden">
             </label>
         </form>
 
@@ -723,7 +787,7 @@
         <input style="font-size:1.3em;" type="reset" class="button-cancel" value="Cancel" data-role="none">
         </a>
     </div>
-</section>
+</section> -->
 
 
 
@@ -742,7 +806,7 @@
         </div>
 
         <div class="edit">
-            <div class="button_small js-submit-house-edit-form" onclick="info_prompt('Saved!');">
+            <div class="button_small js-submit-house-edit-form js-submit-house-edit-photo-form" onclick="info_prompt('Saved!');">
                 <a href="#" >Done</a>
             </div>
 
@@ -766,13 +830,13 @@
         <div class="delete_confirm main">
             <h2>Are you sure you want to delete?</h2>
             <h3>Once deleted, you cannot retrieve your data anymore.</h3>
-            <div class="delete_confirm_container" onclick="info_prompt('Deleted!')";>
-                <div class="button-6 js-delete-house" style="font-size:1.3em;" data-role="none" >
+            <div class="delete_confirm_container">
+                <div class="button-6 js-delete-house" data-role="none" onclick="info_prompt('Deleted!')"; >
                     <a href="#">Delete</a>
                 </div>
-                <div class="button-cancel" type="submit">
+                <div class="button-cancel">
                     <a href="#" data-rel="back">
-                        <input style="font-size:1.3em;" type="reset" class="button-cancel" value="Cancel" data-role="none">
+                       Cancel
                     </a>
                 </div>
                 

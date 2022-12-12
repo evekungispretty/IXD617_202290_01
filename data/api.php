@@ -77,7 +77,7 @@ function makeStatement($data) {
         case "animals_by_user_id":
             return makeQuery($conn, "SELECT * FROM `track_house_item` WHERE `user_id`=?", $params);        
         case "locations_by_animal_id":
-            return makeQuery($conn, "SELECT * FROM `track_locations` WHERE `house_id`=?", $params);
+            return makeQuery($conn, "SELECT * FROM `track_house_item` WHERE `id`=?", $params);
 
         
 
@@ -124,6 +124,12 @@ function makeStatement($data) {
             if (count($result['result']) > 0)
                 return ["error"=>"Username or Email already exists"];
 
+
+        case "sort_animal":
+            $result = makeQuery($conn, "SELECT * 
+                FROM `track_house_item`  WHERE `user_id`=?
+                ORDER BY `$data->column` $data->dir ");
+
         /* INSERT */
 
         case "insert_user":
@@ -156,6 +162,8 @@ function makeStatement($data) {
             if (isset($result['error'])) return $result;
             return ["id" => $conn->lastInsertId()];
 
+
+
         case "insert_animal":
             $result = makeQuery($conn, "INSERT INTO
             `track_house_item`
@@ -177,7 +185,7 @@ function makeStatement($data) {
                 ?,
                 ?,
                 ?,
-                'https://via.placeholder.com/400/?text=ANIMAL',
+                ?,
                 NOW(),
                 ?,
                 ?
@@ -186,6 +194,9 @@ function makeStatement($data) {
 
             if (isset($result['error'])) return $result;
             return ["result"=>"Success"];
+
+
+
 
         case "insert_location":
             $result = makeQuery($conn, "INSERT INTO
@@ -240,6 +251,7 @@ function makeStatement($data) {
             $result = makeQuery($conn, "UPDATE
             `track_house`
             SET
+                `img` = ?,
                 `name` = ?,
                 `username` = ?,
                 `email` = ?
@@ -264,6 +276,7 @@ function makeStatement($data) {
             $result = makeQuery($conn, "UPDATE
             `track_house_item`
             SET
+                `img`= ?,
                 `name` = ?,
                 `type` = ?,
                 `floor` = ?,
@@ -287,6 +300,15 @@ function makeStatement($data) {
             if (isset($result['error'])) return $result;
             return ["result"=>"Success"];
 
+        // case "update_animal_photo":
+        //     $result = makeQuery($conn, "UPDATE
+        //     `track_house_item`
+        //     SET `img` = ?
+        //     WHERE `id` = ?
+        //     ", $params, false);
+
+        //     if (isset($result['error'])) return $result;
+        //     return ["result"=>"Success"];
 
 
             

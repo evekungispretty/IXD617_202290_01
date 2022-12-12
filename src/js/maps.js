@@ -50,6 +50,14 @@ export const makeMarkers = (map_el,marker_locs=[]) => {
                 $(".big-card-container").css("display", "none");
                 map.setZoom(12);
               });
+
+              $("#housecard").click(function () {
+                setTimeout(()=>{$(".big-card-container").css("display", "none");
+                map.setZoom(12);
+            },4000)
+                
+                
+              });
         
         });
         
